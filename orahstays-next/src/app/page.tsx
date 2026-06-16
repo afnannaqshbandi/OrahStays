@@ -229,7 +229,7 @@ export default function HomePage() {
       <section className="sec ivory-sec owner-acquisition">
         <div className="sec-inner owner-split">
           <div className="owner-image">
-            <img src="https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=1100&q=88&fit=crop" alt="Luxury apartment interior" />
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=88&fit=crop" alt="Luxury villa interior and exterior" />
           </div>
           <div>
             <div className="sec-label">For Property Owners</div>
