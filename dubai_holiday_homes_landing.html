@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OrahStays — Dubai Holiday Homes</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --teal:#0D9488;--teal-dark:#0F766E;--teal-light:#CCFBF1;--teal-bg:#F0FDFA;
+  --coral:#F97316;--coral-dark:#EA580C;--coral-light:#FFEDD5;
+  --gold:#D97706;--gold-light:#FEF3C7;
+  --ink:#0F172A;--slate:#475569;--mid:#94A3B8;--mist:#F1F5F9;--white:#FFFFFF;
+  --radius:12px;--radius-lg:20px;
+}
+body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--white);overflow-x:hidden}
+
+/* ═══════════════════ NAV ═══════════════════ */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,0.97);backdrop-filter:blur(16px);border-bottom:1px solid #e2e8f0}
+.nav-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:66px;padding:0 5%}
+.logo{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:var(--teal);cursor:pointer;text-decoration:none}
+.logo span{color:var(--coral)}
+.nav-menu{display:flex;align-items:center;gap:4px;list-style:none}
+.nav-item{position:relative}
+.nav-link{display:flex;align-items:center;gap:5px;padding:8px 14px;border-radius:8px;font-size:14px;font-weight:500;color:var(--slate);cursor:pointer;transition:all .2s;white-space:nowrap;background:none;border:none;font-family:inherit}
+.nav-link:hover,.nav-link.active{background:var(--teal-bg);color:var(--teal)}
+.nav-link svg{transition:transform .2s}
+.nav-item:hover .nav-link svg{transform:rotate(180deg)}
+.dropdown{position:absolute;top:calc(100% + 8px);left:0;background:#fff;border:1px solid #e2e8f0;border-radius:var(--radius);box-shadow:0 12px 40px rgba(0,0,0,.12);min-width:220px;opacity:0;visibility:hidden;transform:translateY(-8px);transition:all .2s;z-index:300}
+.nav-item:hover .dropdown{opacity:1;visibility:visible;transform:translateY(0)}
+.dropdown-item{display:flex;align-items:center;gap:10px;padding:11px 16px;font-size:14px;color:var(--slate);cursor:pointer;transition:all .15s;border-radius:6px;margin:4px}
+.dropdown-item:hover{background:var(--teal-bg);color:var(--teal)}
+.dropdown-item .di-icon{width:32px;height:32px;border-radius:8px;background:var(--mist);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.dropdown-item:hover .di-icon{background:var(--teal-light)}
+.di-text .di-title{font-weight:500;font-size:13px}
+.di-text .di-sub{font-size:12px;color:var(--mid);margin-top:1px}
+.nav-right{display:flex;align-items:center;gap:10px}
+.btn-ghost{background:none;border:1.5px solid #e2e8f0;padding:8px 18px;border-radius:8px;font-size:14px;font-weight:500;cursor:pointer;color:var(--slate);font-family:inherit;transition:all .2s}
+.btn-ghost:hover{border-color:var(--teal);color:var(--teal)}
+.btn-primary{background:var(--teal);color:#fff;border:none;padding:9px 20px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;transition:background .2s}
+.btn-primary:hover{background:var(--teal-dark)}
+
+/* ═══════════════════ PAGE SYSTEM ═══════════════════ */
+.page{display:none;padding-top:66px}
+.page.active{display:block}
+
+/* ═══════════════════ HERO ═══════════════════ */
+.hero{min-height:88vh;background:linear-gradient(135deg,#0F766E 0%,#134E4A 45%,#0C4A6E 100%);position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-shapes{position:absolute;inset:0;pointer-events:none}
+.sh{position:absolute;border-radius:50%;opacity:.1}
+.sh1{width:560px;height:560px;background:#fff;top:-120px;right:-100px}
+.sh2{width:320px;height:320px;background:var(--coral);bottom:-80px;left:6%}
+.sh3{width:220px;height:220px;background:var(--gold);top:28%;left:-50px}
+.hero-content{position:relative;z-index:2;text-align:center;padding:3rem 5%;max-width:1100px}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.22);color:#fff;font-size:13px;padding:6px 16px;border-radius:20px;margin-bottom:1.5rem}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,5.5vw,4.2rem);font-weight:700;color:#fff;line-height:1.12;margin-bottom:1rem}
+.hero h1 em{color:#5EEAD4;font-style:normal}
+.hero-sub{font-size:1.1rem;color:rgba(255,255,255,.8);margin-bottom:2.5rem;max-width:560px;margin-left:auto;margin-right:auto;line-height:1.7}
+.search-box{background:#fff;border-radius:var(--radius-lg);padding:1.5rem;display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:12px;align-items:end;max-width:900px;margin:0 auto;box-shadow:0 24px 64px rgba(0,0,0,.25)}
+.sf label{display:block;font-size:11px;font-weight:700;color:var(--mid);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
+.sf input,.sf select{width:100%;border:1.5px solid #e2e8f0;border-radius:8px;padding:10px 14px;font-size:14px;color:var(--ink);font-family:inherit;outline:none;transition:border-color .2s}
+.sf input:focus,.sf select:focus{border-color:var(--teal)}
+.search-btn{background:var(--coral);color:#fff;border:none;border-radius:10px;padding:0 28px;font-size:15px;font-weight:600;cursor:pointer;height:44px;font-family:inherit;transition:background .2s}
+.search-btn:hover{background:var(--coral-dark)}
+
+/* ═══════════════════ STATS ═══════════════════ */
+.stats-bar{background:var(--coral);padding:1.1rem 5%}
+.stats-inner{max-width:1280px;margin:0 auto;display:flex;justify-content:space-around;flex-wrap:wrap;gap:1rem}
+.stat-item{text-align:center;color:#fff}
+.stat-num{font-size:1.9rem;font-weight:700;line-height:1}
+.stat-lbl{font-size:12px;opacity:.85;margin-top:3px}
+
+/* ═══════════════════ COMMON ═══════════════════ */
+.sec{padding:5rem 5%}
+.sec-inner{max-width:1280px;margin:0 auto}
+.sec-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--teal);margin-bottom:.5rem}
+.sec-title{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,3vw,2.5rem);font-weight:700;color:var(--ink);margin-bottom:.75rem}
+.sec-sub{color:var(--slate);font-size:1rem;max-width:540px;line-height:1.7}
+.sec-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2rem;flex-wrap:wrap;gap:1rem}
+.link-more{color:var(--teal);font-size:14px;font-weight:600;text-decoration:none;cursor:pointer}
+.link-more:hover{text-decoration:underline}
+
+/* ═══════════════════ AREA CARDS ═══════════════════ */
+.areas-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px}
+.area-card{border-radius:var(--radius);overflow:hidden;cursor:pointer;transition:transform .25s}
+.area-card:hover{transform:translateY(-4px)}
+.area-img{height:190px;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:1rem}
+.area-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.area-card:hover .area-img img{transform:scale(1.07)}
+.area-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05) 0%,rgba(0,0,0,.68) 100%)}
+.area-txt{position:relative;z-index:2}
+.area-name{color:#fff;font-weight:700;font-size:.95rem}
+.area-count{color:rgba(255,255,255,.78);font-size:12px}
+
+/* ═══════════════════ PROPERTY CARDS ═══════════════════ */
+.filter-tabs{display:flex;gap:8px;margin-bottom:2rem;flex-wrap:wrap}
+.tab{padding:8px 18px;border-radius:30px;border:1.5px solid #e2e8f0;font-size:13px;font-weight:500;cursor:pointer;transition:all .2s;background:#fff;color:var(--slate);font-family:inherit}
+.tab.active,.tab:hover{background:var(--teal);color:#fff;border-color:var(--teal)}
+.props-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.prop-card{border-radius:var(--radius-lg);overflow:hidden;border:1px solid #e2e8f0;background:#fff;transition:box-shadow .25s,transform .25s;cursor:pointer}
+.prop-card:hover{box-shadow:0 14px 44px rgba(0,0,0,.11);transform:translateY(-4px)}
+.prop-img{height:220px;position:relative;overflow:hidden}
+.prop-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.prop-card:hover .prop-img img{transform:scale(1.05)}
+.prop-badge{position:absolute;top:12px;left:12px;z-index:2;background:rgba(255,255,255,.95);border-radius:6px;padding:4px 10px;font-size:12px;font-weight:600}
+.bp{color:var(--coral)}.bf{color:var(--gold)}.bn{color:var(--teal)}
+.prop-fav{position:absolute;top:12px;right:12px;z-index:2;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.9);border:none;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center}
+.prop-body{padding:1.25rem}
+.prop-area{font-size:11px;color:var(--teal);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.4rem}
+.prop-name{font-weight:600;font-size:.95rem;color:var(--ink);margin-bottom:.5rem;line-height:1.4}
+.prop-meta{display:flex;gap:12px;margin-bottom:.75rem;flex-wrap:wrap}
+.prop-meta span{font-size:13px;color:var(--slate)}
+.prop-footer{display:flex;align-items:center;justify-content:space-between;padding-top:.75rem;border-top:1px solid #f1f5f9}
+.prop-price{font-size:1.1rem;font-weight:700;color:var(--ink)}
+.prop-price small{font-size:12px;font-weight:400;color:var(--slate)}
+.prop-rating{font-size:13px;font-weight:600;color:var(--gold)}
+.book-btn{background:var(--teal);color:#fff;border:none;border-radius:8px;padding:7px 16px;font-size:13px;font-weight:600;cursor:pointer;transition:background .2s;font-family:inherit}
+.book-btn:hover{background:var(--teal-dark)}
+.side-info{display:flex;align-items:center;gap:8px}
+
+/* ═══════════════════ WHY / FEATURES ═══════════════════ */
+.dark-sec{background:linear-gradient(135deg,#0F766E 0%,#134E4A 100%);color:#fff}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;margin-top:2.5rem}
+.why-card{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:var(--radius);padding:1.5rem}
+.why-icon{font-size:2rem;margin-bottom:.75rem}
+.why-title{font-weight:600;font-size:1rem;margin-bottom:.5rem}
+.why-desc{font-size:14px;opacity:.8;line-height:1.6}
+
+/* ═══════════════════ TESTIMONIALS ═══════════════════ */
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:2rem}
+.testi-card{background:#fff;border-radius:var(--radius);padding:1.5rem;border:1px solid #e2e8f0;position:relative}
+.testi-card::before{content:'"';font-family:'Playfair Display',serif;font-size:4rem;color:var(--teal-light);position:absolute;top:.25rem;left:1rem;line-height:1}
+.testi-text{font-size:14px;color:var(--slate);line-height:1.7;margin-bottom:1rem;padding-top:1.5rem}
+.testi-author{display:flex;align-items:center;gap:10px}
+.t-avatar{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;color:#fff}
+.av1{background:var(--teal)}.av2{background:var(--coral)}.av3{background:var(--gold)}.av4{background:#7C3AED}.av5{background:#DB2777}
+.t-name{font-weight:600;font-size:14px;color:var(--ink)}
+.t-loc{font-size:12px;color:var(--slate)}
+.stars{color:var(--gold);font-size:13px;margin-bottom:.5rem}
+
+/* ═══════════════════ CTA BANNER ═══════════════════ */
+.cta-banner{background:var(--coral);padding:4rem 5%;text-align:center}
+.cta-banner h2{font-family:'Playfair Display',serif;font-size:2rem;color:#fff;margin-bottom:.75rem}
+.cta-banner p{color:rgba(255,255,255,.85);margin-bottom:1.5rem;max-width:540px;margin-left:auto;margin-right:auto}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-white{background:#fff;color:var(--coral);border:none;padding:12px 28px;border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;transition:.2s}
+.btn-white:hover{background:#fff7ed}
+.btn-outline-w{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.6);padding:12px 28px;border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;transition:.2s}
+.btn-outline-w:hover{background:rgba(255,255,255,.1)}
+
+/* ═══════════════════ PAGE HERO (inner pages) ═══════════════════ */
+.page-hero{padding:4rem 5%;background:linear-gradient(135deg,#0F766E,#0C4A6E);color:#fff;text-align:center}
+.page-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:700;margin-bottom:.75rem}
+.page-hero p{font-size:1rem;opacity:.85;max-width:560px;margin:0 auto;line-height:1.7}
+.breadcrumb{display:flex;gap:8px;align-items:center;justify-content:center;font-size:13px;opacity:.7;margin-bottom:1rem}
+.breadcrumb span{cursor:pointer}
+.breadcrumb span:hover{opacity:1;text-decoration:underline}
+
+/* ═══════════════════ BROWSE HOMES PAGE ═══════════════════ */
+.browse-layout{display:grid;grid-template-columns:280px 1fr;gap:32px;align-items:start}
+.filter-panel{background:#fff;border:1px solid #e2e8f0;border-radius:var(--radius-lg);padding:1.5rem;position:sticky;top:90px}
+.filter-panel h3{font-size:15px;font-weight:700;margin-bottom:1.25rem;color:var(--ink)}
+.filter-group{margin-bottom:1.5rem}
+.filter-group label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--mid);display:block;margin-bottom:.75rem}
+.filter-group select,.filter-group input[type=range]{width:100%;border:1.5px solid #e2e8f0;border-radius:8px;padding:9px 12px;font-size:14px;font-family:inherit;outline:none;color:var(--ink)}
+.filter-group select:focus{border-color:var(--teal)}
+.check-group{display:flex;flex-direction:column;gap:8px}
+.check-item{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--slate);cursor:pointer}
+.check-item input{accent-color:var(--teal);width:15px;height:15px}
+.range-val{font-size:13px;font-weight:600;color:var(--teal);margin-top:6px}
+.apply-filter{width:100%;background:var(--teal);color:#fff;border:none;padding:11px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;margin-top:.5rem}
+.props-count{font-size:14px;color:var(--slate);margin-bottom:1.25rem}
+.sort-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:.75rem}
+.sort-row select{border:1.5px solid #e2e8f0;border-radius:8px;padding:8px 12px;font-size:13px;font-family:inherit;outline:none;color:var(--ink)}
+
+/* ═══════════════════ PROPERTY DETAIL ═══════════════════ */
+.detail-layout{display:grid;grid-template-columns:1fr 380px;gap:32px;align-items:start;max-width:1280px;margin:0 auto;padding:3rem 5%}
+.detail-gallery{border-radius:var(--radius-lg);overflow:hidden;margin-bottom:1.5rem}
+.detail-gallery img{width:100%;height:420px;object-fit:cover;display:block}
+.detail-thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px}
+.detail-thumbs img{width:100%;height:80px;object-fit:cover;border-radius:8px;cursor:pointer;opacity:.7;transition:opacity .2s}
+.detail-thumbs img:hover,.detail-thumbs img.active{opacity:1}
+.detail-info h1{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;margin-bottom:.5rem}
+.detail-location{font-size:14px;color:var(--teal);font-weight:600;margin-bottom:1rem}
+.detail-meta-row{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid #f1f5f9}
+.detail-meta-row span{font-size:14px;color:var(--slate)}
+.detail-desc{font-size:15px;color:var(--slate);line-height:1.8;margin-bottom:1.5rem}
+.amenities-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:1.5rem}
+.amenity{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--slate);padding:10px;background:var(--mist);border-radius:8px}
+.amenity-icon{font-size:18px}
+.booking-card{background:#fff;border:1px solid #e2e8f0;border-radius:var(--radius-lg);padding:1.5rem;position:sticky;top:90px;box-shadow:0 8px 32px rgba(0,0,0,.08)}
+.booking-price{font-size:1.6rem;font-weight:700;color:var(--ink);margin-bottom:1rem}
+.booking-price small{font-size:14px;font-weight:400;color:var(--slate)}
+.booking-fields{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.bf-item label{font-size:11px;font-weight:700;color:var(--mid);text-transform:uppercase;letter-spacing:.05em;display:block;margin-bottom:5px}
+.bf-item input,.bf-item select{width:100%;border:1.5px solid #e2e8f0;border-radius:8px;padding:9px 12px;font-size:14px;font-family:inherit;outline:none}
+.bf-item input:focus{border-color:var(--teal)}
+.book-now{width:100%;background:var(--coral);color:#fff;border:none;padding:14px;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;font-family:inherit;margin-top:4px;transition:background .2s}
+.book-now:hover{background:var(--coral-dark)}
+.booking-note{font-size:12px;color:var(--mid);text-align:center;margin-top:10px}
+.price-breakdown{margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid #f1f5f9}
+.price-row{display:flex;justify-content:space-between;font-size:14px;color:var(--slate);margin-bottom:8px}
+.price-row.total{font-weight:700;color:var(--ink);font-size:15px;padding-top:8px;border-top:1px solid #e2e8f0;margin-top:4px}
+
+/* ═══════════════════ MONTHLY STAYS ═══════════════════ */
+.monthly-perks{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;margin-bottom:3rem}
+.perk-card{text-align:center;padding:2rem 1.5rem;border:1px solid #e2e8f0;border-radius:var(--radius-lg);transition:all .2s}
+.perk-card:hover{border-color:var(--teal);background:var(--teal-bg)}
+.perk-icon{font-size:2.5rem;margin-bottom:.75rem}
+.perk-title{font-weight:700;font-size:1rem;margin-bottom:.4rem;color:var(--ink)}
+.perk-desc{font-size:13px;color:var(--slate);line-height:1.6}
+
+/* ═══════════════════ PROPERTY OWNERS PAGE ═══════════════════ */
+.steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;margin:2rem 0}
+.step-card{padding:2rem 1.5rem;border-radius:var(--radius-lg);background:var(--mist);position:relative}
+.step-num{font-family:'Playfair Display',serif;font-size:3rem;font-weight:700;color:var(--teal-light);position:absolute;top:1rem;right:1.25rem;line-height:1}
+.step-icon{font-size:2rem;margin-bottom:.75rem}
+.step-title{font-weight:700;font-size:1rem;margin-bottom:.5rem;color:var(--ink)}
+.step-desc{font-size:13px;color:var(--slate);line-height:1.6}
+.earnings-calc{background:#fff;border:1px solid #e2e8f0;border-radius:var(--radius-lg);padding:2rem;max-width:600px;margin:2rem auto}
+.earnings-calc h3{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;margin-bottom:1.5rem;text-align:center}
+.calc-row{margin-bottom:1.25rem}
+.calc-row label{font-size:13px;font-weight:600;color:var(--slate);display:block;margin-bottom:.4rem}
+.calc-row input,.calc-row select{width:100%;border:1.5px solid #e2e8f0;border-radius:8px;padding:10px 14px;font-size:14px;font-family:inherit;outline:none}
+.calc-row input:focus{border-color:var(--teal)}
+.calc-result{background:var(--teal-bg);border:1px solid var(--teal-light);border-radius:var(--radius);padding:1.25rem;text-align:center;margin-top:1rem}
+.calc-result-num{font-size:2rem;font-weight:700;color:var(--teal)}
+.calc-result-lbl{font-size:13px;color:var(--teal-dark);margin-top:4px}
+.calc-btn{width:100%;background:var(--teal);color:#fff;border:none;padding:12px;border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;margin-top:1rem}
+
+/* ═══════════════════ ABOUT PAGE ═══════════════════ */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-bottom:4rem}
+.about-img{border-radius:var(--radius-lg);overflow:hidden;height:420px}
+.about-img img{width:100%;height:100%;object-fit:cover}
+.about-text .sec-label{margin-bottom:.5rem}
+.about-text .sec-title{margin-bottom:1rem}
+.about-text p{font-size:15px;color:var(--slate);line-height:1.8;margin-bottom:1rem}
+.team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;margin-top:2rem}
+.team-card{text-align:center;padding:2rem 1rem;border:1px solid #e2e8f0;border-radius:var(--radius-lg);transition:all .2s}
+.team-card:hover{border-color:var(--teal);transform:translateY(-3px)}
+.team-avatar{width:80px;height:80px;border-radius:50%;margin:0 auto 1rem;font-size:2rem;display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;font-size:1.5rem}
+.team-name{font-weight:700;font-size:1rem;color:var(--ink);margin-bottom:.25rem}
+.team-role{font-size:13px;color:var(--teal);font-weight:600;margin-bottom:.5rem}
+.team-bio{font-size:13px;color:var(--slate);line-height:1.6}
+.awards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-top:2rem}
+.award-card{border:1px solid #e2e8f0;border-radius:var(--radius);padding:1.25rem;text-align:center}
+.award-icon{font-size:2.5rem;margin-bottom:.5rem}
+.award-title{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:.25rem}
+.award-body{font-size:12px;color:var(--slate)}
+
+/* ═══════════════════ CONTACT PAGE ═══════════════════ */
+.contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.contact-form{background:#fff;border:1px solid #e2e8f0;border-radius:var(--radius-lg);padding:2rem}
+.form-row{margin-bottom:1.25rem}
+.form-row label{font-size:13px;font-weight:600;color:var(--slate);display:block;margin-bottom:.4rem}
+.form-row input,.form-row select,.form-row textarea{width:100%;border:1.5px solid #e2e8f0;border-radius:8px;padding:11px 14px;font-size:14px;font-family:inherit;outline:none;transition:border-color .2s;color:var(--ink)}
+.form-row input:focus,.form-row select:focus,.form-row textarea:focus{border-color:var(--teal)}
+.form-row textarea{resize:vertical;min-height:120px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.submit-btn{width:100%;background:var(--teal);color:#fff;border:none;padding:13px;border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;transition:background .2s}
+.submit-btn:hover{background:var(--teal-dark)}
+.contact-info-card{background:var(--mist);border-radius:var(--radius-lg);padding:2rem;margin-bottom:1.5rem}
+.contact-info-card h3{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;margin-bottom:1.25rem;color:var(--ink)}
+.ci-item{display:flex;gap:12px;margin-bottom:1rem;align-items:flex-start}
+.ci-icon{font-size:1.3rem;flex-shrink:0;margin-top:2px}
+.ci-text{font-size:14px;color:var(--slate);line-height:1.6}
+.ci-text strong{display:block;font-weight:600;color:var(--ink);font-size:13px;margin-bottom:2px}
+.map-placeholder{background:linear-gradient(135deg,#0F766E,#0C4A6E);border-radius:var(--radius-lg);height:220px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1rem;font-weight:500}
+
+/* ═══════════════════ FOOTER ═══════════════════ */
+footer{background:var(--ink);color:rgba(255,255,255,.72);padding:3.5rem 5% 1.5rem}
+.footer-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:2.2fr 1fr 1fr 1fr;gap:2.5rem;margin-bottom:2.5rem}
+.foot-brand{font-family:'Playfair Display',serif;font-size:1.4rem;color:#fff;margin-bottom:.75rem}
+.foot-brand span{color:#5EEAD4}
+.foot-desc{font-size:13px;line-height:1.75;margin-bottom:1rem}
+.foot-social{display:flex;gap:10px}
+.soc-btn{width:34px;height:34px;border-radius:8px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.1);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;cursor:pointer;transition:background .2s}
+.soc-btn:hover{background:rgba(255,255,255,.2)}
+.foot-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#fff;margin-bottom:1rem}
+.foot-links{list-style:none}
+.foot-links li{margin-bottom:.5rem}
+.foot-links a{text-decoration:none;color:rgba(255,255,255,.6);font-size:13px;cursor:pointer;transition:color .2s}
+.foot-links a:hover{color:#5EEAD4}
+.foot-bottom{max-width:1280px;margin:0 auto;border-top:1px solid rgba(255,255,255,.08);padding-top:1.5rem;font-size:12px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+
+/* ═══════════════════ RESPONSIVE ═══════════════════ */
+@media(max-width:1024px){
+  .browse-layout{grid-template-columns:1fr}
+  .filter-panel{position:static}
+  .detail-layout{grid-template-columns:1fr}
+  .contact-layout{grid-template-columns:1fr}
+  .about-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  .search-box{grid-template-columns:1fr 1fr}
+  .search-btn{grid-column:1/-1}
+  .nav-menu{display:none}
+  .footer-grid{grid-template-columns:1fr}
+  .booking-fields{grid-template-columns:1fr}
+  .amenities-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:520px){
+  .search-box{grid-template-columns:1fr}
+  .form-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════ NAV ═══════ -->
+<nav>
+  <div class="nav-inner">
+    <a class="logo" onclick="showPage('home')">Orah<span>Stays</span></a>
+    <ul class="nav-menu">
+
+      <li class="nav-item">
+        <button class="nav-link" onclick="showPage('browse')">
+          Browse Homes
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <div class="dropdown">
+          <div class="dropdown-item" onclick="showPage('browse')">
+            <div class="di-icon">🏙️</div>
+            <div class="di-text"><div class="di-title">All Properties</div><div class="di-sub">700+ homes in Dubai</div></div>
+          </div>
+          <div class="dropdown-item" onclick="showPage('browse')">
+            <div class="di-icon">🏢</div>
+            <div class="di-text"><div class="di-title">Apartments</div><div class="di-sub">Studios to 3-bedroom</div></div>
+          </div>
+          <div class="dropdown-item" onclick="showPage('browse')">
+            <div class="di-icon">🏡</div>
+            <div class="di-text"><div class="di-title">Villas</div><div class="di-sub">Private pool & garden</div></div>
+          </div>
+          <div class="dropdown-item" onclick="showPage('browse')">
+            <div class="di-icon">🌴</div>
+            <div class="di-text"><div class="di-title">Palm Jumeirah</div><div class="di-sub">Beachfront exclusives</div></div>
+          </div>
+          <div class="dropdown-item" onclick="showPage('browse')">
+            <div class="di-icon">⛵</div>
+            <div class="di-text"><div class="di-title">Dubai Marina</div><div class="di-sub">Skyline & waterfront</div></div>
+          </div>
+          <div class="dropdown-item" onclick="showPage('browse')">
+            <div class="di-icon">🗼</div>
+            <div class="di-text"><div class="di-title">Downtown Dubai</div><div class="di-sub">Near Burj Khalifa</div></div>
+          </div>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <button class="nav-link" onclick="showPage('monthly')">
+          Monthly Stays
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <div class="dropdown">
+          <div class="dropdown-item" onclick="showPage('monthly')">
+            <div class="di-icon">📅</div>
+            <div class="di-text"><div class="di-title">30+ Night Stays</div><div class="di-sub">Best monthly rates</div></div>
+          </div>
+          <div class="dropdown-item" onclick="showPage('monthly')">
+            <div class="di-icon">💼</div>
+            <div class="di-text"><div class="di-title">Corporate Housing</div><div class="di-sub">Business travellers</div></div>
+          </div>
+          <div class="dropdown-item" onclick="showPage('monthly')">
+            <div class="di-icon">🌍</div>
+            <div class="di-text"><div class="di-title">Relocation Stays</div><div class="di-sub">Settling into Dubai</div></div>
+          </div>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <button class="nav-link" onclick="showPage('owners')">
+          Property Owners
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <div class="dropdown">
+          <div class="dropdown-item" onclick="showPage('owners')">
+            <div class="di-icon">📈</div>
+            <div class="di-text"><div class="di-title">List Your Property</div><div class="di-sub">Start earning today</div></div>
+          </div>
+          <div class="dropdown-item" onclick="showPage('owners')">
+            <div class="di-icon">🔧</div>
+            <div class="di-text"><div class="di-title">Property Management</div><div class="di-sub">Full-service management</div></div>
+          </div>
+          <div class="dropdown-item" onclick="showPage('owners')">
+            <div class="di-icon">💰</div>
+            <div class="di-text"><div class="di-title">Earnings Calculator</div><div class="di-sub">See your potential</div></div>
+          </div>
+          <div class="dropdown-item" onclick="showPage('owners')">
+            <div class="di-icon">🤝</div>
+            <div class="di-text"><div class="di-title">Partner Program</div><div class="di-sub">Referral rewards</div></div>
+          </div>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <button class="nav-link" onclick="showPage('about')">
+          About
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <div class="dropdown">
+          <div class="dropdown-item" onclick="showPage('about')">
+            <div class="di-icon">✨</div>
+            <div class="di-text"><div class="di-title">Our Story</div><div class="di-sub">Who we are</div></div>
+          </div>
+          <div class="dropdown-item" onclick="showPage('about')">
+            <div class="di-icon">🏆</div>
+            <div class="di-text"><div class="di-title">Awards & Recognition</div><div class="di-sub">Industry accolades</div></div>
+          </div>
+          <div class="dropdown-item" onclick="showPage('about')">
+            <div class="di-icon">👥</div>
+            <div class="di-text"><div class="di-title">Our Team</div><div class="di-sub">Meet the people</div></div>
+          </div>
+          <div class="dropdown-item" onclick="showPage('contact')">
+            <div class="di-icon">📞</div>
+            <div class="di-text"><div class="di-title">Contact Us</div><div class="di-sub">Get in touch</div></div>
+          </div>
+        </div>
+      </li>
+
+    </ul>
+    <div class="nav-right">
+      <button class="btn-ghost" onclick="showPage('contact')">Contact</button>
+      <button class="btn-primary" onclick="showPage('owners')">List Property</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ════════════════════════════════════════════
+     PAGE: HOME
+════════════════════════════════════════════ -->
+<div id="page-home" class="page active">
+
+  <section class="hero">
+    <div class="hero-shapes">
+      <div class="sh sh1"></div><div class="sh sh2"></div><div class="sh sh3"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge">✦ Dubai's Premium Holiday Home Platform</div>
+      <h1>Find Your Perfect Stay<br>in <em>Dubai</em></h1>
+      <p class="hero-sub">Handpicked luxury apartments, villas & holiday homes — from Marina skylines to Palm beachfronts.</p>
+      <div class="search-box">
+        <div class="sf"><label>Location</label><select><option>All Dubai Areas</option><option>Dubai Marina</option><option>Downtown Dubai</option><option>Business Bay</option><option>Palm Jumeirah</option><option>JBR</option><option>Dubai Hills</option></select></div>
+        <div class="sf"><label>Check-in → Check-out</label><input type="text" placeholder="Select dates"></div>
+        <div class="sf"><label>Guests</label><select><option>1–2 Guests</option><option>3–4 Guests</option><option>5–6 Guests</option><option>7+ Guests</option></select></div>
+        <button class="search-btn" onclick="showPage('browse')">🔍 Search</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="stats-bar">
+    <div class="stats-inner">
+      <div class="stat-item"><div class="stat-num" id="s1">700+</div><div class="stat-lbl">Premium Properties</div></div>
+      <div class="stat-item"><div class="stat-num" id="s2">12,000+</div><div class="stat-lbl">Happy Guests</div></div>
+      <div class="stat-item"><div class="stat-num" id="s3">35</div><div class="stat-lbl">Dubai Neighbourhoods</div></div>
+      <div class="stat-item"><div class="stat-num" id="s4">4.9★</div><div class="stat-lbl">Average Rating</div></div>
+    </div>
+  </div>
+
+  <!-- Areas -->
+  <section class="sec" style="background:var(--mist)">
+    <div class="sec-inner">
+      <div class="sec-header">
+        <div><div class="sec-label">Browse by location</div><div class="sec-title">Discover Dubai's Finest Areas</div></div>
+        <span class="link-more" onclick="showPage('browse')">View all areas →</span>
+      </div>
+      <div class="areas-grid">
+        <div class="area-card" onclick="showPage('browse')"><div class="area-img"><img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=400&q=80&fit=crop" alt="Dubai Marina"><div class="area-overlay"></div><div class="area-txt"><div class="area-name">Dubai Marina</div><div class="area-count">250+ homes</div></div></div></div>
+        <div class="area-card" onclick="showPage('browse')"><div class="area-img"><img src="https://images.unsplash.com/photo-1582672060674-bc2bd808a8b5?w=400&q=80&fit=crop" alt="Downtown Dubai"><div class="area-overlay"></div><div class="area-txt"><div class="area-name">Downtown Dubai</div><div class="area-count">110+ homes</div></div></div></div>
+        <div class="area-card" onclick="showPage('browse')"><div class="area-img"><img src="https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=400&q=80&fit=crop" alt="Palm Jumeirah"><div class="area-overlay"></div><div class="area-txt"><div class="area-name">Palm Jumeirah</div><div class="area-count">80+ homes</div></div></div></div>
+        <div class="area-card" onclick="showPage('browse')"><div class="area-img"><img src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=400&q=80&fit=crop" alt="JBR"><div class="area-overlay"></div><div class="area-txt"><div class="area-name">JBR</div><div class="area-count">90+ homes</div></div></div></div>
+        <div class="area-card" onclick="showPage('browse')"><div class="area-img"><img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=400&q=80&fit=crop" alt="Business Bay"><div class="area-overlay"></div><div class="area-txt"><div class="area-name">Business Bay</div><div class="area-count">130+ homes</div></div></div></div>
+        <div class="area-card" onclick="showPage('browse')"><div class="area-img"><img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=400&q=80&fit=crop" alt="Dubai Hills"><div class="area-overlay"></div><div class="area-txt"><div class="area-name">Dubai Hills</div><div class="area-count">60+ homes</div></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Properties -->
+  <section class="sec">
+    <div class="sec-inner">
+      <div class="sec-label">Hand-picked for you</div>
+      <div class="sec-title">Holiday Homes & Apartments</div>
+      <p class="sec-sub" style="margin-bottom:1.75rem">From cozy studios to palatial villas — for every trip, every budget.</p>
+      <div class="filter-tabs">
+        <div class="tab active" onclick="setTab(this)">All</div>
+        <div class="tab" onclick="setTab(this)">Villas</div>
+        <div class="tab" onclick="setTab(this)">Apartments</div>
+        <div class="tab" onclick="setTab(this)">Studios</div>
+        <div class="tab" onclick="setTab(this)">Monthly Stays</div>
+      </div>
+      <div class="props-grid" id="home-props"></div>
+      <div style="text-align:center;margin-top:2.5rem">
+        <button onclick="showPage('browse')" style="background:none;border:2px solid var(--teal);color:var(--teal);padding:12px 32px;border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit">View All Properties →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why -->
+  <section class="sec dark-sec">
+    <div class="sec-inner">
+      <div class="sec-label" style="color:#5EEAD4">Why choose us</div>
+      <div class="sec-title" style="color:#fff">The OrahStays Difference</div>
+      <div class="why-grid">
+        <div class="why-card"><div class="why-icon">✅</div><div class="why-title">DTCM Licensed</div><div class="why-desc">All properties fully licensed and compliant with Dubai Tourism & Commerce Marketing regulations.</div></div>
+        <div class="why-card"><div class="why-icon">🏡</div><div class="why-title">Curated Collection</div><div class="why-desc">Every home is personally inspected — no substandard listings, ever.</div></div>
+        <div class="why-card"><div class="why-icon">📞</div><div class="why-title">24/7 Guest Support</div><div class="why-desc">Round-the-clock concierge and emergency support throughout your stay.</div></div>
+        <div class="why-card"><div class="why-icon">💳</div><div class="why-title">Flexible Payments</div><div class="why-desc">Pay by card, bank transfer, or crypto — in AED, USD, EUR, GBP and more.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="sec" style="background:var(--mist)">
+    <div class="sec-inner">
+      <div class="sec-label">Guest reviews</div>
+      <div class="sec-title">What Our Guests Say</div>
+      <div class="testi-grid">
+        <div class="testi-card"><div class="stars">★★★★★</div><p class="testi-text">Absolutely stunning Marina apartment. The views were beyond what we imagined, and the check-in was seamless. We'll be back next winter!</p><div class="testi-author"><div class="t-avatar av1">MK</div><div><div class="t-name">Mohamed K.</div><div class="t-loc">Cairo, Egypt</div></div></div></div>
+        <div class="testi-card"><div class="stars">★★★★★</div><p class="testi-text">The Palm villa was a dream for our family of 8. Private pool, private beach, and the team was incredible. Worth every dirham.</p><div class="testi-author"><div class="t-avatar av2">SH</div><div><div class="t-name">Shahid H.</div><div class="t-loc">London, UK</div></div></div></div>
+        <div class="testi-card"><div class="stars">★★★★☆</div><p class="testi-text">Great location in Business Bay, very clean and modern. The canal views from the studio were a nice surprise. Highly recommend.</p><div class="testi-author"><div class="t-avatar av3">DR</div><div><div class="t-name">Deen R.</div><div class="t-loc">Sydney, Australia</div></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-banner">
+    <h2>Own a Property in Dubai?</h2>
+    <p>Maximize your returns with professional short-term rental management. We handle everything — from guests to maintenance.</p>
+    <div class="cta-btns">
+      <button class="btn-white" onclick="showPage('owners')">Calculate Your Earnings</button>
+      <button class="btn-outline-w" onclick="showPage('owners')">Learn About Management</button>
+    </div>
+  </div>
+
+</div><!-- /home -->
+
+<!-- ════════════════════════════════════════════
+     PAGE: BROWSE HOMES
+════════════════════════════════════════════ -->
+<div id="page-browse" class="page">
+
+  <div class="page-hero">
+    <div class="breadcrumb"><span onclick="showPage('home')">Home</span> / <span>Browse Homes</span></div>
+    <h1>Browse Dubai Holiday Homes</h1>
+    <p>700+ verified properties across Dubai's most sought-after neighbourhoods</p>
+  </div>
+
+  <section class="sec">
+    <div class="sec-inner">
+      <div class="browse-layout">
+        <!-- Filter Panel -->
+        <div class="filter-panel">
+          <h3>🔍 Filter Properties</h3>
+          <div class="filter-group">
+            <label>Area</label>
+            <select>
+              <option>All Areas</option>
+              <option>Dubai Marina</option>
+              <option>Downtown Dubai</option>
+              <option>Palm Jumeirah</option>
+              <option>Business Bay</option>
+              <option>JBR</option>
+              <option>Dubai Hills</option>
+              <option>Creek Harbour</option>
+              <option>Jumeirah</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label>Property Type</label>
+            <div class="check-group">
+              <label class="check-item"><input type="checkbox" checked> Apartments</label>
+              <label class="check-item"><input type="checkbox" checked> Villas</label>
+              <label class="check-item"><input type="checkbox"> Penthouses</label>
+              <label class="check-item"><input type="checkbox"> Studio</label>
+              <label class="check-item"><input type="checkbox"> Townhouses</label>
+            </div>
+          </div>
+          <div class="filter-group">
+            <label>Bedrooms</label>
+            <select>
+              <option>Any</option>
+              <option>Studio</option>
+              <option>1 Bedroom</option>
+              <option>2 Bedrooms</option>
+              <option>3 Bedrooms</option>
+              <option>4+ Bedrooms</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label>Max Price per Night (AED)</label>
+            <input type="range" min="200" max="10000" value="3000" oninput="document.getElementById('range-val').textContent='AED '+Number(this.value).toLocaleString()">
+            <div class="range-val" id="range-val">AED 3,000</div>
+          </div>
+          <div class="filter-group">
+            <label>Amenities</label>
+            <div class="check-group">
+              <label class="check-item"><input type="checkbox"> Private Pool</label>
+              <label class="check-item"><input type="checkbox"> Beach Access</label>
+              <label class="check-item"><input type="checkbox"> Gym</label>
+              <label class="check-item"><input type="checkbox"> Parking</label>
+              <label class="check-item"><input type="checkbox"> Pet Friendly</label>
+              <label class="check-item"><input type="checkbox"> Sea View</label>
+            </div>
+          </div>
+          <button class="apply-filter">Apply Filters</button>
+        </div>
+
+        <!-- Results -->
+        <div>
+          <div class="sort-row">
+            <div class="props-count">Showing <strong>48</strong> properties</div>
+            <select><option>Sort: Recommended</option><option>Price: Low to High</option><option>Price: High to Low</option><option>Rating: Highest</option><option>Newest</option></select>
+          </div>
+          <div class="props-grid" id="browse-props"></div>
+          <div style="text-align:center;margin-top:2.5rem">
+            <button style="background:var(--teal);color:#fff;border:none;padding:12px 32px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit">Load More Properties</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /browse -->
+
+<!-- ════════════════════════════════════════════
+     PAGE: PROPERTY DETAIL
+════════════════════════════════════════════ -->
+<div id="page-detail" class="page">
+  <div class="detail-layout">
+    <div>
+      <div class="breadcrumb" style="justify-content:flex-start;color:var(--slate);margin-bottom:1.25rem">
+        <span onclick="showPage('home')" style="color:var(--teal);cursor:pointer">Home</span> /
+        <span onclick="showPage('browse')" style="color:var(--teal);cursor:pointer">Browse</span> /
+        <span>Palm Jumeirah Villa</span>
+      </div>
+      <div class="detail-gallery">
+        <img id="detail-main-img" src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=900&q=80&fit=crop" alt="Property main photo">
+      </div>
+      <div class="detail-thumbs">
+        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=300&q=80&fit=crop" class="active" onclick="swapImg(this,'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=900&q=80&fit=crop')" alt="thumb1">
+        <img src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=300&q=80&fit=crop" onclick="swapImg(this,'https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=900&q=80&fit=crop')" alt="thumb2">
+        <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=300&q=80&fit=crop" onclick="swapImg(this,'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=900&q=80&fit=crop')" alt="thumb3">
+        <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=300&q=80&fit=crop" onclick="swapImg(this,'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=900&q=80&fit=crop')" alt="thumb4">
+      </div>
+      <div style="margin-top:2rem">
+        <div class="detail-location">📍 Palm Jumeirah, Dubai</div>
+        <div class="detail-info"><h1>5BR Beachfront Villa with Private Pool</h1></div>
+        <div class="detail-meta-row">
+          <span>🛏 5 Bedrooms</span><span>🚿 4 Bathrooms</span><span>👤 10 Guests</span><span>📐 480 sqm</span><span class="prop-rating">★ 5.0 (42 reviews)</span>
+        </div>
+        <p class="detail-desc">Nestled on the iconic Palm Jumeirah, this stunning 5-bedroom villa offers unparalleled views of the Arabian Gulf and the Dubai skyline. Wake up to the sound of waves on your private beach and spend evenings floating in your temperature-controlled pool. The villa is furnished to the highest standard with custom Italian furniture, a fully-equipped chef's kitchen, and a home theatre. Steps away from the best restaurants and beach clubs the Palm has to offer.</p>
+        <div class="sec-label" style="margin-bottom:1rem">Amenities</div>
+        <div class="amenities-grid">
+          <div class="amenity"><span class="amenity-icon">🏊</span> Private Pool</div>
+          <div class="amenity"><span class="amenity-icon">🏖️</span> Private Beach</div>
+          <div class="amenity"><span class="amenity-icon">🚗</span> Parking x3</div>
+          <div class="amenity"><span class="amenity-icon">🍳</span> Chef's Kitchen</div>
+          <div class="amenity"><span class="amenity-icon">🎬</span> Home Theatre</div>
+          <div class="amenity"><span class="amenity-icon">💪</span> Home Gym</div>
+          <div class="amenity"><span class="amenity-icon">📡</span> High-Speed WiFi</div>
+          <div class="amenity"><span class="amenity-icon">❄️</span> Central A/C</div>
+          <div class="amenity"><span class="amenity-icon">🧺</span> Laundry Room</div>
+        </div>
+        <div class="sec-label" style="margin:1.5rem 0 1rem">Guest Reviews</div>
+        <div class="testi-grid">
+          <div class="testi-card"><div class="stars">★★★★★</div><p class="testi-text">Words can't describe how perfect this villa was. The beach, the pool, the sunset views — absolutely magical Dubai experience.</p><div class="testi-author"><div class="t-avatar av4">AK</div><div><div class="t-name">Aisha K.</div><div class="t-loc">Riyadh, KSA</div></div></div></div>
+          <div class="testi-card"><div class="stars">★★★★★</div><p class="testi-text">We hosted a family reunion here — 9 of us. Space was perfect, team was responsive, and the concierge helped plan every evening.</p><div class="testi-author"><div class="t-avatar av5">JP</div><div><div class="t-name">James P.</div><div class="t-loc">New York, USA</div></div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Booking Card -->
+    <div>
+      <div class="booking-card">
+        <div class="booking-price">AED 4,200 <small>/night</small></div>
+        <div class="booking-fields">
+          <div class="bf-item"><label>Check-in</label><input type="date"></div>
+          <div class="bf-item"><label>Check-out</label><input type="date"></div>
+        </div>
+        <div class="bf-item" style="margin-bottom:12px"><label>Guests</label><select style="width:100%;border:1.5px solid #e2e8f0;border-radius:8px;padding:9px 12px;font-size:14px;font-family:inherit"><option>2 Guests</option><option>4 Guests</option><option>6 Guests</option><option>8 Guests</option><option>10 Guests</option></select></div>
+        <button class="book-now">Reserve Now</button>
+        <div class="booking-note">You won't be charged yet — confirm to complete booking</div>
+        <div class="price-breakdown">
+          <div class="price-row"><span>AED 4,200 × 5 nights</span><span>AED 21,000</span></div>
+          <div class="price-row"><span>Cleaning fee</span><span>AED 800</span></div>
+          <div class="price-row"><span>Service fee</span><span>AED 1,050</span></div>
+          <div class="price-row total"><span>Total</span><span>AED 22,850</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div><!-- /detail -->
+
+<!-- ════════════════════════════════════════════
+     PAGE: MONTHLY STAYS
+════════════════════════════════════════════ -->
+<div id="page-monthly" class="page">
+
+  <div class="page-hero">
+    <div class="breadcrumb"><span onclick="showPage('home')">Home</span> / <span>Monthly Stays</span></div>
+    <h1>Monthly Stays in Dubai</h1>
+    <p>30+ night stays at special rates — ideal for business travellers, relocators & long-term visitors</p>
+  </div>
+
+  <section class="sec">
+    <div class="sec-inner">
+      <div class="sec-label">Why stay monthly</div>
+      <div class="sec-title">Benefits of a Monthly Stay</div>
+      <div class="monthly-perks">
+        <div class="perk-card"><div class="perk-icon">💰</div><div class="perk-title">Up to 40% Savings</div><div class="perk-desc">Monthly rates are significantly lower than short-term nightly pricing.</div></div>
+        <div class="perk-card"><div class="perk-icon">🏠</div><div class="perk-title">Fully Furnished</div><div class="perk-desc">Everything you need from day one — kitchen, linens, WiFi, utilities.</div></div>
+        <div class="perk-card"><div class="perk-icon">🧹</div><div class="perk-title">Regular Housekeeping</div><div class="perk-desc">Weekly cleaning included in all monthly packages.</div></div>
+        <div class="perk-card"><div class="perk-icon">📋</div><div class="perk-title">Simple Contracts</div><div class="perk-desc">Flexible terms — no long-term tenancy agreements required.</div></div>
+        <div class="perk-card"><div class="perk-icon">🛎️</div><div class="perk-title">Concierge Support</div><div class="perk-desc">Dedicated point of contact for the duration of your stay.</div></div>
+      </div>
+
+      <div class="sec-label" style="margin-top:1rem">Who it's for</div>
+      <div class="sec-title">Perfect for Every Long-Stay Guest</div>
+      <div class="why-grid" style="margin-top:1.5rem">
+        <div class="why-card" style="background:var(--teal-bg);border-color:var(--teal-light)">
+          <div class="why-icon">💼</div><div class="why-title" style="color:var(--ink)">Business Travellers</div><div class="why-desc" style="color:var(--slate);opacity:1">On assignment in Dubai? Live comfortably with all amenities — no hotel fatigue.</div>
+        </div>
+        <div class="why-card" style="background:var(--teal-bg);border-color:var(--teal-light)">
+          <div class="why-icon">🌍</div><div class="why-title" style="color:var(--ink)">Relocating to Dubai</div><div class="why-desc" style="color:var(--slate);opacity:1">New to the city? Stay in a neighbourhood while you find your permanent home.</div>
+        </div>
+        <div class="why-card" style="background:var(--teal-bg);border-color:var(--teal-light)">
+          <div class="why-icon">👨‍👩‍👧</div><div class="why-title" style="color:var(--ink)">Extended Families</div><div class="why-desc" style="color:var(--slate);opacity:1">Visiting family for months? A holiday home beats a hotel for space and value.</div>
+        </div>
+        <div class="why-card" style="background:var(--teal-bg);border-color:var(--teal-light)">
+          <div class="why-icon">❄️</div><div class="why-title" style="color:var(--ink)">Winter Escapees</div><div class="why-desc" style="color:var(--slate);opacity:1">Escape the cold and spend the season in Dubai's warm sunshine and luxury.</div>
+        </div>
+      </div>
+
+      <div style="margin-top:3rem">
+        <div class="sec-label">Monthly listings</div>
+        <div class="sec-title" style="margin-bottom:1.5rem">Available for Monthly Stays</div>
+        <div class="props-grid" id="monthly-props"></div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /monthly -->
+
+<!-- ════════════════════════════════════════════
+     PAGE: PROPERTY OWNERS
+════════════════════════════════════════════ -->
+<div id="page-owners" class="page">
+
+  <div class="page-hero">
+    <div class="breadcrumb"><span onclick="showPage('home')">Home</span> / <span>Property Owners</span></div>
+    <h1>List Your Dubai Property</h1>
+    <p>Join 500+ property owners earning maximum returns with OrahStays' full-service management</p>
+  </div>
+
+  <section class="sec">
+    <div class="sec-inner">
+      <div class="sec-label">How it works</div>
+      <div class="sec-title">Start Earning in 4 Simple Steps</div>
+      <div class="steps-grid">
+        <div class="step-card"><div class="step-num">01</div><div class="step-icon">📋</div><div class="step-title">List Your Property</div><div class="step-desc">Submit your property details. Our team reviews and onboards you within 48 hours.</div></div>
+        <div class="step-card"><div class="step-num">02</div><div class="step-icon">📸</div><div class="step-title">Professional Setup</div><div class="step-desc">We handle photography, listing copy, pricing strategy, and channel distribution.</div></div>
+        <div class="step-card"><div class="step-num">03</div><div class="step-icon">🛎️</div><div class="step-title">We Manage Everything</div><div class="step-desc">Guest comms, check-in, housekeeping, maintenance — all handled by our team.</div></div>
+        <div class="step-card"><div class="step-num">04</div><div class="step-icon">💰</div><div class="step-title">You Get Paid</div><div class="step-desc">Monthly payouts directly to your account with full transparent reporting.</div></div>
+      </div>
+
+      <!-- Earnings Calculator -->
+      <div class="earnings-calc">
+        <h3>💰 Earnings Calculator</h3>
+        <div class="calc-row">
+          <label>Property Type</label>
+          <select id="calc-type"><option value="500">Studio</option><option value="750">1 Bedroom</option><option value="1200" selected>2 Bedroom</option><option value="1800">3 Bedroom</option><option value="3500">Villa</option></select>
+        </div>
+        <div class="calc-row">
+          <label>Location</label>
+          <select id="calc-loc"><option value="1">Dubai Marina</option><option value="1.1">Downtown Dubai</option><option value="1.5" selected>Palm Jumeirah</option><option value="0.9">Business Bay</option><option value="0.85">JBR</option></select>
+        </div>
+        <div class="calc-row">
+          <label>Expected Occupancy</label>
+          <select id="calc-occ"><option value="0.6">Conservative (60%)</option><option value="0.75" selected>Average (75%)</option><option value="0.9">Peak Season (90%)</option></select>
+        </div>
+        <button class="calc-btn" onclick="calcEarnings()">Calculate My Earnings</button>
+        <div class="calc-result" id="calc-result">
+          <div class="calc-result-num" id="calc-num">AED 40,500</div>
+          <div class="calc-result-lbl">Estimated monthly revenue</div>
+        </div>
+      </div>
+
+      <!-- What's included -->
+      <div style="margin-top:3rem">
+        <div class="sec-label">Full-service management</div>
+        <div class="sec-title">Everything We Handle For You</div>
+        <div class="why-grid" style="margin-top:1.5rem">
+          <div class="why-card"><div class="why-icon">📣</div><div class="why-title">Multi-Channel Marketing</div><div class="why-desc">Listed on Airbnb, Booking.com, Expedia, VRBO, and our own platform.</div></div>
+          <div class="why-card"><div class="why-icon">💬</div><div class="why-title">Guest Communication</div><div class="why-desc">24/7 guest support, booking management, and review handling.</div></div>
+          <div class="why-card"><div class="why-icon">🧹</div><div class="why-title">Housekeeping</div><div class="why-desc">Professional cleaning and linen service before every guest arrival.</div></div>
+          <div class="why-card"><div class="why-icon">🔧</div><div class="why-title">Maintenance</div><div class="why-desc">Quick-response maintenance team for any repairs or issues.</div></div>
+          <div class="why-card"><div class="why-icon">📊</div><div class="why-title">Revenue Management</div><div class="why-desc">Dynamic pricing to maximise occupancy and revenue year-round.</div></div>
+          <div class="why-card"><div class="why-icon">📑</div><div class="why-title">DTCM Compliance</div><div class="why-desc">We manage all licensing, permits, and regulatory requirements.</div></div>
+        </div>
+      </div>
+
+      <div class="cta-banner" style="border-radius:var(--radius-lg);margin-top:3rem">
+        <h2>Ready to Maximise Your Returns?</h2>
+        <p>Talk to our property team today and get a free rental income assessment.</p>
+        <div class="cta-btns"><button class="btn-white" onclick="showPage('contact')">Get Free Assessment</button><button class="btn-outline-w">Download Owner Guide</button></div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /owners -->
+
+<!-- ════════════════════════════════════════════
+     PAGE: ABOUT
+════════════════════════════════════════════ -->
+<div id="page-about" class="page">
+
+  <div class="page-hero">
+    <div class="breadcrumb"><span onclick="showPage('home')">Home</span> / <span>About Us</span></div>
+    <h1>About OrahStays</h1>
+    <p>Dubai's most trusted holiday home platform — built on care, quality, and local expertise</p>
+  </div>
+
+  <section class="sec">
+    <div class="sec-inner">
+      <div class="about-grid">
+        <div>
+          <div class="about-img"><img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80&fit=crop" alt="Dubai skyline OrahStays"></div>
+        </div>
+        <div class="about-text">
+          <div class="sec-label">Our story</div>
+          <div class="sec-title">We Started With One Apartment. Now We Have 700+.</div>
+          <p>OrahStays was founded in 2018 by a group of Dubai hospitality professionals who believed that holiday homes should feel exactly that — like a home, not just a room with a key.</p>
+          <p>We started by managing three apartments in Dubai Marina. Today we're the emirate's fastest-growing short-term rental platform, with over 700 hand-picked properties across 35 neighbourhoods — from Downtown Dubai studios to Palm Jumeirah beachfront villas.</p>
+          <p>Every decision we make is guided by one question: would we put our own family here? If the answer is yes, it earns a place in our collection.</p>
+          <button class="btn-primary" onclick="showPage('contact')">Get in Touch</button>
+        </div>
+      </div>
+
+      <!-- Team -->
+      <div class="sec-label">The people behind OrahStays</div>
+      <div class="sec-title">Meet Our Team</div>
+      <div class="team-grid">
+        <div class="team-card"><div class="team-avatar av1">SK</div><div class="team-name">Sara Khalid</div><div class="team-role">Founder & CEO</div><div class="team-bio">10+ years in Dubai hospitality. Former GM at a leading Downtown hotel.</div></div>
+        <div class="team-card"><div class="team-avatar av2">OM</div><div class="team-name">Omar Mansoor</div><div class="team-role">Head of Operations</div><div class="team-bio">Ensures every guest experience exceeds expectations. OCD about quality.</div></div>
+        <div class="team-card"><div class="team-avatar av3">LT</div><div class="team-name">Lena Tran</div><div class="team-role">Revenue & Growth</div><div class="team-bio">Data-driven pricing expert. Maximises owner returns with dynamic strategy.</div></div>
+        <div class="team-card"><div class="team-avatar av4">KA</div><div class="team-name">Karim Aziz</div><div class="team-role">Guest Experience</div><div class="team-bio">Your 24/7 concierge lead. Makes every guest feel like a VIP from arrival.</div></div>
+      </div>
+
+      <!-- Awards -->
+      <div style="margin-top:4rem">
+        <div class="sec-label">Recognition</div>
+        <div class="sec-title">Award-Winning Holiday Homes</div>
+        <div class="awards-grid">
+          <div class="award-card"><div class="award-icon">🏆</div><div class="award-title">World Travel Awards 2025</div><div class="award-body">Best Holiday Homes Rental Company — UAE</div></div>
+          <div class="award-card"><div class="award-icon">🥇</div><div class="award-title">International Travel Awards</div><div class="award-body">Middle East's Best Holiday Homes Management</div></div>
+          <div class="award-card"><div class="award-icon">⭐</div><div class="award-title">Dubai's Leading STR Company</div><div class="award-body">Awarded by World Travel Awards 2025</div></div>
+          <div class="award-card"><div class="award-icon">🎖️</div><div class="award-title">GCC Enterprise Awards</div><div class="award-body">Best Holiday Home Platform 2024</div></div>
+          <div class="award-card"><div class="award-icon">💎</div><div class="award-title">Lux Life Awards</div><div class="award-body">Most Trusted Dubai Holiday Home Brand</div></div>
+          <div class="award-card"><div class="award-icon">🌟</div><div class="award-title">Luxury Lifestyle Awards</div><div class="award-body">Hospitality Excellence 2023 & 2024</div></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</div><!-- /about -->
+
+<!-- ════════════════════════════════════════════
+     PAGE: CONTACT
+════════════════════════════════════════════ -->
+<div id="page-contact" class="page">
+
+  <div class="page-hero">
+    <div class="breadcrumb"><span onclick="showPage('home')">Home</span> / <span>Contact Us</span></div>
+    <h1>Get in Touch</h1>
+    <p>We'd love to hear from you — whether you're a guest, a property owner, or just curious</p>
+  </div>
+
+  <section class="sec">
+    <div class="sec-inner">
+      <div class="contact-layout">
+
+        <div class="contact-form">
+          <div class="sec-title" style="font-size:1.4rem;margin-bottom:1.5rem">Send Us a Message</div>
+          <div class="form-grid">
+            <div class="form-row"><label>First Name</label><input type="text" placeholder="Sara"></div>
+            <div class="form-row"><label>Last Name</label><input type="text" placeholder="Khalid"></div>
+          </div>
+          <div class="form-row"><label>Email Address</label><input type="email" placeholder="sara@example.com"></div>
+          <div class="form-row"><label>Phone Number</label><input type="tel" placeholder="+971 50 000 0000"></div>
+          <div class="form-row">
+            <label>I'm enquiring about</label>
+            <select>
+              <option>Booking a Holiday Home</option>
+              <option>Monthly / Long-Term Stay</option>
+              <option>Listing My Property</option>
+              <option>Property Management Services</option>
+              <option>Partnership / Corporate</option>
+              <option>General Enquiry</option>
+            </select>
+          </div>
+          <div class="form-row"><label>Message</label><textarea placeholder="Tell us more about your enquiry..."></textarea></div>
+          <button class="submit-btn">Send Message →</button>
+        </div>
+
+        <div>
+          <div class="contact-info-card">
+            <h3>Contact Information</h3>
+            <div class="ci-item"><span class="ci-icon">📍</span><div class="ci-text"><strong>Office Address</strong>Level 14, Boulevard Plaza Tower 1, Downtown Dubai, UAE</div></div>
+            <div class="ci-item"><span class="ci-icon">📞</span><div class="ci-text"><strong>Phone</strong>+971 4 123 4567</div></div>
+            <div class="ci-item"><span class="ci-icon">💬</span><div class="ci-text"><strong>WhatsApp</strong>+971 50 123 4567</div></div>
+            <div class="ci-item"><span class="ci-icon">📧</span><div class="ci-text"><strong>Email</strong>hello@orahstays.com</div></div>
+            <div class="ci-item"><span class="ci-icon">🕐</span><div class="ci-text"><strong>Office Hours</strong>Mon–Sat: 9:00 AM – 7:00 PM GST<br>Guest Support: 24/7</div></div>
+          </div>
+          <div class="map-placeholder">📍 Downtown Dubai, UAE<br><small style="opacity:.7;font-size:13px">Near Burj Khalifa Metro Station</small></div>
+          <div style="margin-top:1.5rem">
+            <div class="sec-label" style="margin-bottom:.75rem">Quick options</div>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <button onclick="showPage('browse')" style="background:var(--teal-bg);color:var(--teal);border:1.5px solid var(--teal-light);padding:12px 20px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;text-align:left">🏠 Browse Available Homes →</button>
+              <button onclick="showPage('owners')" style="background:var(--coral-light);color:var(--coral-dark);border:1.5px solid #FED7AA;padding:12px 20px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;text-align:left">📈 List My Property →</button>
+              <button onclick="showPage('monthly')" style="background:var(--gold-light);color:var(--gold);border:1.5px solid #FDE68A;padding:12px 20px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;text-align:left">📅 Enquire About Monthly Stays →</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</div><!-- /contact -->
+
+<!-- ════════════════════════════════════════════
+     FOOTER (always visible)
+════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="foot-brand">Orah<span>Stays</span></div>
+      <p class="foot-desc">Dubai's premium holiday home platform — connecting discerning guests with exceptional properties across the emirate. DTCM licensed & fully compliant.</p>
+      <div class="foot-social">
+        <div class="soc-btn">f</div>
+        <div class="soc-btn">in</div>
+        <div class="soc-btn">ig</div>
+        <div class="soc-btn">yt</div>
+      </div>
+    </div>
+    <div>
+      <div class="foot-title">Properties</div>
+      <ul class="foot-links">
+        <li><a onclick="showPage('browse')">Studios</a></li>
+        <li><a onclick="showPage('browse')">1 Bedroom</a></li>
+        <li><a onclick="showPage('browse')">2 Bedrooms</a></li>
+        <li><a onclick="showPage('browse')">Villas</a></li>
+        <li><a onclick="showPage('monthly')">Monthly Stays</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="foot-title">Areas</div>
+      <ul class="foot-links">
+        <li><a onclick="showPage('browse')">Dubai Marina</a></li>
+        <li><a onclick="showPage('browse')">Downtown Dubai</a></li>
+        <li><a onclick="showPage('browse')">Palm Jumeirah</a></li>
+        <li><a onclick="showPage('browse')">Business Bay</a></li>
+        <li><a onclick="showPage('browse')">JBR</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="foot-title">Company</div>
+      <ul class="foot-links">
+        <li><a onclick="showPage('about')">About Us</a></li>
+        <li><a onclick="showPage('owners')">Property Management</a></li>
+        <li><a onclick="showPage('owners')">Partner Program</a></li>
+        <li><a onclick="showPage('contact')">Contact Us</a></li>
+        <li><a onclick="showPage('about')">Careers</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2026 OrahStays. All rights reserved. DTCM Licensed.</span>
+    <span>Privacy Policy · Terms · House Rules · Sitemap</span>
+  </div>
+</footer>
+
+<script>
+// ── Property Data ──
+const properties = [
+  {area:'Dubai Marina',name:'Panoramic Marina View 2BR with Terrace',beds:2,baths:2,guests:4,price:'AED 750',rating:'4.9',badge:'🔥 Popular',bc:'bp',img:'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&q=80&fit=crop'},
+  {area:'Downtown Dubai',name:'Burj Khalifa View Luxury 1BR, Fountain District',beds:1,baths:1,guests:2,price:'AED 600',rating:'4.8',badge:'⭐ Featured',bc:'bf',img:'https://images.unsplash.com/photo-1582672060674-bc2bd808a8b5?w=600&q=80&fit=crop'},
+  {area:'Palm Jumeirah',name:'5BR Beachfront Villa with Private Pool',beds:5,baths:4,guests:10,price:'AED 4,200',rating:'5.0',badge:'✨ New',bc:'bn',img:'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80&fit=crop'},
+  {area:'JBR',name:'Beachside 1BR Steps from the Walk',beds:1,baths:1,guests:3,price:'AED 500',rating:'4.7',badge:'🔥 Popular',bc:'bp',img:'https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=600&q=80&fit=crop'},
+  {area:'Business Bay',name:'Canal View Studio, Walk to Metro',beds:'Studio',baths:1,guests:2,price:'AED 320',rating:'4.6',badge:'⭐ Featured',bc:'bf',img:'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=600&q=80&fit=crop'},
+  {area:'Dubai Hills',name:'Golf Course View 3BR Villa with Lawn',beds:3,baths:3,guests:6,price:'AED 1,800',rating:'4.9',badge:'✨ New',bc:'bn',img:'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&q=80&fit=crop'},
+];
+
+function renderCard(p, clickDetail){
+  return `<div class="prop-card" ${clickDetail?'onclick="showPage(\'detail\')"':''}>
+    <div class="prop-img">
+      <img src="${p.img}" alt="${p.name}" loading="lazy">
+      <div class="prop-badge ${p.bc}">${p.badge}</div>
+      <button class="prop-fav" onclick="event.stopPropagation();toggleFav(this)">🤍</button>
+    </div>
+    <div class="prop-body">
+      <div class="prop-area">${p.area}</div>
+      <div class="prop-name">${p.name}</div>
+      <div class="prop-meta"><span>🛏 ${p.beds} ${p.beds==='Studio'?'':'Bed'}</span><span>🚿 ${p.baths} Bath</span><span>👤 ${p.guests} Guests</span></div>
+      <div class="prop-footer">
+        <div class="prop-price">${p.price} <small>/night</small></div>
+        <div class="side-info"><span class="prop-rating">★ ${p.rating}</span><button class="book-btn" onclick="event.stopPropagation();showPage('detail')">Book</button></div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function populateGrids(){
+  const homePros = document.getElementById('home-props');
+  const browsePros = document.getElementById('browse-props');
+  const monthlyPros = document.getElementById('monthly-props');
+  if(homePros) homePros.innerHTML = properties.map(p=>renderCard(p,true)).join('');
+  if(browsePros) browsePros.innerHTML = properties.map(p=>renderCard(p,true)).join('');
+  if(monthlyPros) monthlyPros.innerHTML = properties.slice(0,3).map(p=>renderCard(p,true)).join('');
+}
+
+// ── Page Router ──
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  const target = document.getElementById('page-'+id);
+  if(target){
+    target.classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  document.querySelectorAll('.nav-link').forEach(l=>l.classList.remove('active'));
+}
+
+// ── Tab Filter ──
+function setTab(el){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+}
+
+// ── Fav Toggle ──
+function toggleFav(btn){btn.textContent=btn.textContent==='🤍'?'❤️':'🤍'}
+
+// ── Gallery Swap ──
+function swapImg(thumb, src){
+  document.getElementById('detail-main-img').src = src;
+  document.querySelectorAll('.detail-thumbs img').forEach(i=>i.classList.remove('active'));
+  thumb.classList.add('active');
+}
+
+// ── Earnings Calc ──
+function calcEarnings(){
+  const base = parseFloat(document.getElementById('calc-type').value);
+  const loc = parseFloat(document.getElementById('calc-loc').value);
+  const occ = parseFloat(document.getElementById('calc-occ').value);
+  const monthly = Math.round(base * loc * occ * 30 * 0.8);
+  document.getElementById('calc-num').textContent = 'AED ' + monthly.toLocaleString();
+}
+
+// ── Init ──
+populateGrids();
+calcEarnings();
+</script>
+</body>
+</html>
