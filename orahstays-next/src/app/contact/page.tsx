@@ -9,8 +9,8 @@ export default function ContactPage() {
         </div>
         <h1>Get in Touch</h1>
         <p>
-          We&apos;d love to hear from you — whether you&apos;re a guest, a property owner, or just
-          curious
+          Speak with Lumiras Casa about premium stays, owner onboarding, concierge support, or
+          platform previews.
         </p>
       </div>
 
@@ -18,8 +18,8 @@ export default function ContactPage() {
         <div className="sec-inner">
           <div className="contact-layout">
             <div className="contact-form">
-              <div className="sec-title" style={{ fontSize: "1.4rem", marginBottom: "1.5rem" }}>
-                Send Us a Message
+              <div className="sec-title" style={{ fontSize: "2.2rem", marginBottom: "1.5rem" }}>
+                Send an Enquiry
               </div>
               <div className="form-grid">
                 <div className="form-row">
@@ -42,7 +42,7 @@ export default function ContactPage() {
               <div className="form-row">
                 <label>I&apos;m enquiring about</label>
                 <select>
-                  <option>Booking a Holiday Home</option>
+                  <option>Booking a Luxury Holiday Home</option>
                   <option>Monthly / Long-Term Stay</option>
                   <option>Listing My Property</option>
                   <option>Property Management Services</option>
@@ -54,7 +54,7 @@ export default function ContactPage() {
                 <label>Message</label>
                 <textarea placeholder="Tell us more about your enquiry..." />
               </div>
-              <button className="submit-btn">Send Message →</button>
+              <button className="submit-btn">Send Message</button>
             </div>
 
             <div>
@@ -63,8 +63,7 @@ export default function ContactPage() {
                 <div className="ci-item">
                   <span className="ci-icon">📍</span>
                   <div className="ci-text">
-                    <strong>Office Address</strong>Level 14, Boulevard Plaza Tower 1, Downtown
-                    Dubai, UAE
+                    <strong>Office Address</strong>Downtown Dubai, UAE
                   </div>
                 </div>
                 <div className="ci-item">
@@ -82,7 +81,7 @@ export default function ContactPage() {
                 <div className="ci-item">
                   <span className="ci-icon">📧</span>
                   <div className="ci-text">
-                    <strong>Email</strong>hello@orahstays.com
+                    <strong>Email</strong>hello@lumirascasa.com
                   </div>
                 </div>
                 <div className="ci-item">
@@ -95,7 +94,7 @@ export default function ContactPage() {
                 </div>
               </div>
               <div className="map-placeholder">
-                📍 Downtown Dubai, UAE
+                Downtown Dubai, UAE
                 <br />
                 <small style={{ opacity: 0.7, fontSize: "13px" }}>
                   Near Burj Khalifa Metro Station
@@ -122,7 +121,7 @@ export default function ContactPage() {
                       textDecoration: "none",
                     }}
                   >
-                    🏠 Browse Available Homes →
+                    Browse Available Homes
                   </Link>
                   <Link
                     href="/owners"
@@ -140,7 +139,7 @@ export default function ContactPage() {
                       textDecoration: "none",
                     }}
                   >
-                    📈 List My Property →
+                    List My Property
                   </Link>
                   <Link
                     href="/monthly"
@@ -158,7 +157,7 @@ export default function ContactPage() {
                       textDecoration: "none",
                     }}
                   >
-                    📅 Enquire About Monthly Stays →
+                    Enquire About Monthly Stays
                   </Link>
                 </div>
               </div>

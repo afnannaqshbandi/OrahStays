@@ -1210,3 +1210,176 @@ nav{
   .destination-grid,.collection-grid,.featured-section .props-grid,.stays-page-sec .props-grid,.detail-gallery-lux,.luxury-amenities{grid-template-columns:1fr}
   .gallery-main{min-height:360px}
 }
+
+/* ═══════════════════ REMAINING PAGES: LUXURY SYSTEM CONSISTENCY ═══════════════════ */
+.page-hero{
+  padding:132px 7vw 72px;
+  color:var(--pearl);
+  text-align:center;
+  background:
+    radial-gradient(circle at 78% 18%,rgba(200,169,106,.18),transparent 30%),
+    linear-gradient(90deg,rgba(7,7,7,.9),rgba(7,7,7,.48)),
+    url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=85") center/cover;
+}
+.page-hero h1{
+  font-family:var(--font-playfair),serif;
+  font-size:clamp(52px,6vw,94px);
+  line-height:.88;
+  letter-spacing:-.035em;
+  font-weight:650;
+  margin-bottom:18px;
+}
+.page-hero p{color:rgba(255,253,248,.72);font-size:17px;line-height:1.7}
+.page-hero .breadcrumb{color:rgba(255,253,248,.62)}
+
+.about-grid,.contact-layout{
+  gap:48px;
+}
+.about-img,.contact-form,.contact-info-card,.map-placeholder,.team-card,.award-card,.perk-card,.step-card,.earnings-calc{
+  border-radius:28px;
+  border:1px solid rgba(200,169,106,.18);
+  box-shadow:0 22px 70px rgba(23,19,13,.08);
+}
+.about-img{height:560px}
+.about-img img{filter:saturate(.92) contrast(1.04)}
+.about-text p{font-size:16px;line-height:1.8;color:rgba(22,18,14,.68)}
+.team-grid,.awards-grid,.monthly-perks,.steps-grid{gap:18px}
+.team-card,.award-card,.perk-card,.step-card{
+  background:rgba(255,253,248,.74);
+  padding:24px;
+  transition:transform .25s,border-color .25s,box-shadow .25s;
+}
+.team-card:hover,.award-card:hover,.perk-card:hover,.step-card:hover{
+  transform:translateY(-5px);
+  border-color:rgba(200,169,106,.45);
+  box-shadow:0 28px 80px rgba(23,19,13,.12);
+}
+.team-avatar,.award-icon,.perk-icon,.step-icon{
+  width:48px;
+  height:48px;
+  border-radius:999px;
+  display:grid;
+  place-items:center;
+  margin:0 auto 14px;
+  background:rgba(200,169,106,.12)!important;
+  border:1px solid rgba(200,169,106,.28);
+  color:var(--bronze)!important;
+  font-family:var(--font-playfair),serif;
+  font-size:18px;
+}
+.team-name,.award-title,.perk-title,.step-title{
+  font-family:var(--font-playfair),serif;
+  font-size:24px;
+  line-height:1;
+  color:#16120e;
+}
+.team-role,.award-body,.perk-desc,.step-desc,.team-bio{color:rgba(22,18,14,.64);line-height:1.65}
+
+.owners-page .sec,.monthly-page .sec,.contact-page .sec{}
+.step-card{position:relative;overflow:hidden}
+.step-num{color:rgba(200,169,106,.22);font-size:58px}
+.earnings-calc{
+  background:#fff;
+  border-color:rgba(155,122,69,.18);
+  max-width:720px;
+  padding:32px;
+}
+.earnings-calc h3{
+  font-family:var(--font-playfair),serif;
+  font-size:34px;
+  font-weight:650;
+}
+.calc-row label,.form-row label,.filter-group label{
+  color:var(--bronze);
+  font-size:11px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+.calc-row input,.calc-row select,.form-row input,.form-row select,.form-row textarea{
+  border-radius:16px;
+  border:1px solid rgba(155,122,69,.18);
+  background:rgba(247,241,232,.58);
+  min-height:48px;
+}
+.calc-btn,.submit-btn,.apply-filter{
+  border-radius:999px;
+  background:linear-gradient(135deg,#E5CB88,var(--champagne));
+  color:#111;
+  font-weight:800;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
+.calc-result{
+  border-radius:22px;
+  background:linear-gradient(135deg,rgba(15,61,54,.1),rgba(200,169,106,.16));
+  border-color:rgba(200,169,106,.2);
+}
+.calc-result-num{color:var(--bronze);font-family:var(--font-playfair),serif;font-weight:650}
+.calc-result-lbl{color:rgba(22,18,14,.66)}
+
+.monthly-perks{grid-template-columns:repeat(5,minmax(0,1fr))}
+#monthly-props.props-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+#monthly-props .prop-card{
+  border-radius:24px;
+  border-color:rgba(200,169,106,.18);
+  background:rgba(9,9,9,.92);
+  box-shadow:0 18px 50px rgba(0,0,0,.2);
+}
+#monthly-props .prop-name,#monthly-props .prop-price{color:var(--pearl)}
+#monthly-props .prop-area,#monthly-props .prop-meta span,#monthly-props .prop-price small{color:rgba(247,241,232,.62)}
+#monthly-props .prop-meta span{background:transparent;padding:0}
+#monthly-props .prop-footer{border-top:0}
+
+.contact-form,.contact-info-card{
+  background:#fff;
+  padding:32px;
+}
+.contact-info-card h3{
+  font-family:var(--font-playfair),serif;
+  font-size:34px;
+  font-weight:650;
+}
+.ci-item{gap:14px;padding:12px 0;border-bottom:1px solid rgba(155,122,69,.12)}
+.ci-icon{
+  width:34px;
+  height:34px;
+  display:grid;
+  place-items:center;
+  border-radius:999px;
+  background:rgba(200,169,106,.12);
+  color:transparent;
+  position:relative;
+}
+.ci-icon::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--champagne)}
+.map-placeholder{
+  background:
+    linear-gradient(135deg,rgba(9,9,9,.82),rgba(15,61,54,.54)),
+    url("https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1200&q=85&fit=crop") center/cover;
+  min-height:260px;
+  color:var(--pearl);
+}
+.contact-layout a[style]{
+  background:rgba(255,253,248,.76)!important;
+  color:#16120e!important;
+  border:1px solid rgba(155,122,69,.18)!important;
+  border-radius:999px!important;
+  font-weight:800!important;
+  letter-spacing:.03em;
+}
+.why-grid .why-card{
+  border-radius:22px;
+}
+
+@media(max-width:1120px){
+  .monthly-perks{grid-template-columns:repeat(2,1fr)}
+  #monthly-props.props-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:768px){
+  .page-hero{padding:104px 5% 56px}
+  .page-hero h1{font-size:clamp(44px,13vw,64px)}
+  .about-img{height:360px}
+  .team-grid,.awards-grid,.monthly-perks,.steps-grid,#monthly-props.props-grid{grid-template-columns:1fr}
+  .contact-form,.contact-info-card,.earnings-calc{padding:22px}
+  .form-grid{grid-template-columns:1fr}
+  .contact-layout,.about-grid{gap:28px}
+}

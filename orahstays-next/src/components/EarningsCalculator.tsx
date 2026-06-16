@@ -13,7 +13,7 @@ export default function EarningsCalculator() {
 
   return (
     <div className="earnings-calc">
-      <h3>💰 Earnings Calculator</h3>
+      <h3>Owner Revenue Preview</h3>
       <div className="calc-row">
         <label>Property Type</label>
         <select value={type} onChange={(e) => setType(Number(e.target.value))}>

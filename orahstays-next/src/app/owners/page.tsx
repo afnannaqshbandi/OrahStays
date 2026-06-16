@@ -2,19 +2,19 @@ import Link from "next/link";
 import EarningsCalculator from "@/components/EarningsCalculator";
 
 const steps = [
-  { num: "01", icon: "📋", title: "List Your Property", desc: "Submit your property details. Our team reviews and onboards you within 48 hours." },
-  { num: "02", icon: "📸", title: "Professional Setup", desc: "We handle photography, listing copy, pricing strategy, and channel distribution." },
-  { num: "03", icon: "🛎️", title: "We Manage Everything", desc: "Guest comms, check-in, housekeeping, maintenance — all handled by our team." },
-  { num: "04", icon: "💰", title: "You Get Paid", desc: "Monthly payouts directly to your account with full transparent reporting." },
+  { num: "01", icon: "01", title: "Submit Residence", desc: "Share property details for a premium positioning and readiness review." },
+  { num: "02", icon: "02", title: "Presentation Setup", desc: "We shape photography, copy, pricing, and collection placement." },
+  { num: "03", icon: "03", title: "Guest Operations", desc: "Guest messaging, calendar flow, housekeeping, and readiness are coordinated." },
+  { num: "04", icon: "04", title: "Owner Reporting", desc: "Preview performance, occupancy, booking value, and property status clearly." },
 ];
 
 const included = [
-  { icon: "📣", title: "Multi-Channel Marketing", desc: "Listed on Airbnb, Booking.com, Expedia, VRBO, and our own platform." },
-  { icon: "💬", title: "Guest Communication", desc: "24/7 guest support, booking management, and review handling." },
-  { icon: "🧹", title: "Housekeeping", desc: "Professional cleaning and linen service before every guest arrival." },
-  { icon: "🔧", title: "Maintenance", desc: "Quick-response maintenance team for any repairs or issues." },
-  { icon: "📊", title: "Revenue Management", desc: "Dynamic pricing to maximise occupancy and revenue year-round." },
-  { icon: "📑", title: "DTCM Compliance", desc: "We manage all licensing, permits, and regulatory requirements." },
+  { icon: "PR", title: "Premium Presentation", desc: "Editorial listing pages, image-led cards, and owner-ready positioning." },
+  { icon: "GS", title: "Guest Communication", desc: "Responsive support, booking guidance, and refined arrival coordination." },
+  { icon: "HK", title: "Housekeeping", desc: "Cleaning readiness and linen coordination before guest arrival." },
+  { icon: "RD", title: "Readiness Checks", desc: "Property condition, visual quality, and issue escalation previews." },
+  { icon: "RV", title: "Revenue Positioning", desc: "Premium nightly framing, occupancy cues, and dashboard-level reporting." },
+  { icon: "OP", title: "Operations Preview", desc: "A clear prototype for how the management backend can later work." },
 ];
 
 export default function OwnersPage() {
@@ -24,17 +24,17 @@ export default function OwnersPage() {
         <div className="breadcrumb">
           <Link href="/">Home</Link> / <span>Property Owners</span>
         </div>
-        <h1>List Your Dubai Property</h1>
+        <h1>List Your UAE Residence</h1>
         <p>
-          Join 500+ property owners earning maximum returns with OrahStays&apos; full-service
-          management
+          Position your property as a premium holiday home with Lumiras Casa&apos;s owner-ready
+          presentation system.
         </p>
       </div>
 
       <section className="sec">
         <div className="sec-inner">
           <div className="sec-label">How it works</div>
-          <div className="sec-title">Start Earning in 4 Simple Steps</div>
+          <div className="sec-title">From private residence to premium stay.</div>
           <div className="steps-grid">
             {steps.map((step) => (
               <div className="step-card" key={step.num}>

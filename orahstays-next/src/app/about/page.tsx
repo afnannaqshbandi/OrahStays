@@ -8,12 +8,10 @@ const team = [
 ];
 
 const awards = [
-  { icon: "🏆", title: "World Travel Awards 2025", body: "Best Holiday Homes Rental Company — UAE" },
-  { icon: "🥇", title: "International Travel Awards", body: "Middle East's Best Holiday Homes Management" },
-  { icon: "⭐", title: "Dubai's Leading STR Company", body: "Awarded by World Travel Awards 2025" },
-  { icon: "🎖️", title: "GCC Enterprise Awards", body: "Best Holiday Home Platform 2024" },
-  { icon: "💎", title: "Lux Life Awards", body: "Most Trusted Dubai Holiday Home Brand" },
-  { icon: "🌟", title: "Luxury Lifestyle Awards", body: "Hospitality Excellence 2023 & 2024" },
+  { icon: "01", title: "Hospitality-Led Curation", body: "Residences reviewed for arrival, comfort, location, and service readiness." },
+  { icon: "02", title: "Owner Presentation Standard", body: "Premium listing narratives, photography direction, and platform positioning." },
+  { icon: "03", title: "Guest Experience Quality", body: "A calm stay journey shaped around clarity, responsiveness, and trust." },
+  { icon: "04", title: "UAE Destination Knowledge", body: "Local insight across Dubai, Abu Dhabi, Ras Al Khaimah, and Fujairah." },
 ];
 
 export default function AboutPage() {
@@ -23,10 +21,10 @@ export default function AboutPage() {
         <div className="breadcrumb">
           <Link href="/">Home</Link> / <span>About Us</span>
         </div>
-        <h1>About OrahStays</h1>
+        <h1>About Lumiras Casa</h1>
         <p>
-          Dubai&apos;s most trusted holiday home platform — built on care, quality, and local
-          expertise
+          A UAE luxury holiday homes brand built around curated residences, refined service, and
+          owner-ready presentation.
         </p>
       </div>
 
@@ -38,27 +36,25 @@ export default function AboutPage() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80&fit=crop"
-                  alt="Dubai skyline OrahStays"
+                  alt="Lumiras Casa UAE residences"
                 />
               </div>
             </div>
             <div className="about-text">
               <div className="sec-label">Our story</div>
-              <div className="sec-title">We Started With One Apartment. Now We Have 700+.</div>
+              <div className="sec-title">A hospitality standard for private UAE residences.</div>
               <p>
-                OrahStays was founded in 2018 by a group of Dubai hospitality professionals who
-                believed that holiday homes should feel exactly that — like a home, not just a
-                room with a key.
+                Lumiras Casa curates premium homes for guests who want the privacy of a residence
+                with the ease, confidence, and polish of a hotel arrival.
               </p>
               <p>
-                We started by managing three apartments in Dubai Marina. Today we&apos;re the
-                emirate&apos;s fastest-growing short-term rental platform, with over 700
-                hand-picked properties across 35 neighbourhoods — from Downtown Dubai studios to
-                Palm Jumeirah beachfront villas.
+                Our prototype shows how the brand can present villas, apartments, penthouses, and
+                coastal retreats across the UAE while supporting owner onboarding and internal
+                operations visually.
               </p>
               <p>
-                Every decision we make is guided by one question: would we put our own family
-                here? If the answer is yes, it earns a place in our collection.
+                Every residence should feel selected, not listed: location, design, readiness, and
+                hospitality quality guide the Lumiras Casa standard.
               </p>
               <Link className="btn-primary" href="/contact">
                 Get in Touch
@@ -67,8 +63,8 @@ export default function AboutPage() {
           </div>
 
           {/* Team */}
-          <div className="sec-label">The people behind OrahStays</div>
-          <div className="sec-title">Meet Our Team</div>
+          <div className="sec-label">The people behind Lumiras Casa</div>
+          <div className="sec-title">Meet the hospitality team</div>
           <div className="team-grid">
             {team.map((member) => (
               <div className="team-card" key={member.name}>
@@ -83,7 +79,7 @@ export default function AboutPage() {
           {/* Awards */}
           <div style={{ marginTop: "4rem" }}>
             <div className="sec-label">Recognition</div>
-            <div className="sec-title">Award-Winning Holiday Homes</div>
+            <div className="sec-title">The standards behind the brand</div>
             <div className="awards-grid">
               {awards.map((award) => (
                 <div className="award-card" key={award.title}>

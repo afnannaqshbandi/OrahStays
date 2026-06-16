@@ -3,18 +3,18 @@ import PropertyGrid from "@/components/PropertyGrid";
 import { properties } from "@/data/properties";
 
 const perks = [
-  { icon: "💰", title: "Up to 40% Savings", desc: "Monthly rates are significantly lower than short-term nightly pricing." },
-  { icon: "🏠", title: "Fully Furnished", desc: "Everything you need from day one — kitchen, linens, WiFi, utilities." },
-  { icon: "🧹", title: "Regular Housekeeping", desc: "Weekly cleaning included in all monthly packages." },
-  { icon: "📋", title: "Simple Contracts", desc: "Flexible terms — no long-term tenancy agreements required." },
-  { icon: "🛎️", title: "Concierge Support", desc: "Dedicated point of contact for the duration of your stay." },
+  { icon: "01", title: "Refined Monthly Value", desc: "Long-stay pricing framed for premium residences and flexible plans." },
+  { icon: "02", title: "Fully Furnished", desc: "Kitchen, linens, WiFi, utilities, and arrival-ready comfort." },
+  { icon: "03", title: "Housekeeping Rhythm", desc: "Cleaning and readiness support throughout extended stays." },
+  { icon: "04", title: "Flexible Terms", desc: "Shorter commitments than traditional tenancy, with clearer guest flow." },
+  { icon: "05", title: "Concierge Support", desc: "A dedicated point of contact for the duration of the stay." },
 ];
 
 const audiences = [
-  { icon: "💼", title: "Business Travellers", desc: "On assignment in Dubai? Live comfortably with all amenities — no hotel fatigue." },
-  { icon: "🌍", title: "Relocating to Dubai", desc: "New to the city? Stay in a neighbourhood while you find your permanent home." },
-  { icon: "👨‍👩‍👧", title: "Extended Families", desc: "Visiting family for months? A holiday home beats a hotel for space and value." },
-  { icon: "❄️", title: "Winter Escapees", desc: "Escape the cold and spend the season in Dubai's warm sunshine and luxury." },
+  { icon: "BT", title: "Business Travellers", desc: "Live comfortably with workspace, privacy, and premium neighbourhood access." },
+  { icon: "RL", title: "Relocating to the UAE", desc: "Stay in a considered neighbourhood while choosing a permanent home." },
+  { icon: "FA", title: "Extended Families", desc: "More space, calmer routines, and a private-home feel for longer visits." },
+  { icon: "SE", title: "Seasonal Guests", desc: "Spend winter or summer periods in a serviced private residence." },
 ];
 
 export default function MonthlyPage() {
@@ -24,10 +24,9 @@ export default function MonthlyPage() {
         <div className="breadcrumb">
           <Link href="/">Home</Link> / <span>Monthly Stays</span>
         </div>
-        <h1>Monthly Stays in Dubai</h1>
+        <h1>Monthly Luxury Stays</h1>
         <p>
-          30+ night stays at special rates — ideal for business travellers, relocators &amp;
-          long-term visitors
+          30+ night UAE residences for relocations, seasonal stays, and executive travel.
         </p>
       </div>
 
