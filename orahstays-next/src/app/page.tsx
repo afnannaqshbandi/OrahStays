@@ -1,115 +1,193 @@
 import Link from "next/link";
-import FilterTabs from "@/components/FilterTabs";
 import PropertyGrid from "@/components/PropertyGrid";
-import TestimonialCard from "@/components/TestimonialCard";
 
-const areas = [
-  { name: "Dubai Marina", count: "250+ homes", img: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=400&q=80&fit=crop" },
-  { name: "Downtown Dubai", count: "110+ homes", img: "https://images.unsplash.com/photo-1582672060674-bc2bd808a8b5?w=400&q=80&fit=crop" },
-  { name: "Palm Jumeirah", count: "80+ homes", img: "https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=400&q=80&fit=crop" },
-  { name: "JBR", count: "90+ homes", img: "https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=400&q=80&fit=crop" },
-  { name: "Business Bay", count: "130+ homes", img: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=400&q=80&fit=crop" },
-  { name: "Dubai Hills", count: "60+ homes", img: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=400&q=80&fit=crop" },
+const trustBadges = [
+  "Verified Residences",
+  "Guest Support",
+  "Owner-Ready Platform",
+  "UAE Destinations",
 ];
 
-const whyCards = [
-  { icon: "✅", title: "DTCM Licensed", desc: "All properties fully licensed and compliant with Dubai Tourism & Commerce Marketing regulations." },
-  { icon: "🏡", title: "Curated Collection", desc: "Every home is personally inspected — no substandard listings, ever." },
-  { icon: "📞", title: "24/7 Guest Support", desc: "Round-the-clock concierge and emergency support throughout your stay." },
-  { icon: "💳", title: "Flexible Payments", desc: "Pay by card, bank transfer, or crypto — in AED, USD, EUR, GBP and more." },
+const destinations = [
+  {
+    name: "Dubai",
+    descriptor: "Skyline apartments, Palm villas, Marina residences",
+    stays: "92 curated stays",
+    icon: "DXB",
+    img: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1000&q=88&fit=crop",
+  },
+  {
+    name: "Abu Dhabi",
+    descriptor: "Saadiyat retreats, island homes, cultural coastline",
+    stays: "34 curated stays",
+    icon: "AUH",
+    img: "https://images.unsplash.com/photo-1512632578888-169bbbc64f33?w=1000&q=88&fit=crop",
+  },
+  {
+    name: "Ras Al Khaimah",
+    descriptor: "Mountain resorts, beachfront escapes, family villas",
+    stays: "26 curated stays",
+    icon: "RAK",
+    img: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1000&q=88&fit=crop",
+  },
+  {
+    name: "Fujairah",
+    descriptor: "Coastal mountains, calm beaches, private retreats",
+    stays: "18 curated stays",
+    icon: "FUJ",
+    img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1000&q=88&fit=crop",
+  },
 ];
 
-const testimonials = [
-  { stars: "★★★★★", text: "Absolutely stunning Marina apartment. The views were beyond what we imagined, and the check-in was seamless. We'll be back next winter!", initials: "MK", avatar: "av1", name: "Mohamed K.", location: "Cairo, Egypt" },
-  { stars: "★★★★★", text: "The Palm villa was a dream for our family of 8. Private pool, private beach, and the team was incredible. Worth every dirham.", initials: "SH", avatar: "av2", name: "Shahid H.", location: "London, UK" },
-  { stars: "★★★★☆", text: "Great location in Business Bay, very clean and modern. The canal views from the studio were a nice surprise. Highly recommend.", initials: "DR", avatar: "av3", name: "Deen R.", location: "Sydney, Australia" },
+const collections = [
+  ["Beachfront Escapes", "Private sea-facing residences with resort-style ease.", "Waves"],
+  ["Skyline Penthouses", "Elevated apartments shaped around view, light, and arrival.", "Rise"],
+  ["Private Pool Villas", "Standalone homes for privacy, family time, and quiet hosting.", "Pool"],
+  ["Family Retreats", "Spacious stays with thoughtful layouts and calm guest support.", "Nest"],
+  ["Monthly Luxury Stays", "Longer stays with comfort, service, and flexible rhythm.", "30+"],
+  ["Business Travel Residences", "Polished homes for executives, relocations, and teams.", "Desk"],
+];
+
+const ownerBenefits = [
+  "Premium listing presentation",
+  "Guest communication",
+  "Calendar coordination",
+  "Housekeeping support",
+  "Revenue-focused positioning",
+  "Owner reporting preview",
+];
+
+const ownerMetrics = [
+  ["Monthly Revenue", "AED 42,500"],
+  ["Occupancy", "78%"],
+  ["Upcoming Bookings", "12"],
+  ["Average Nightly Rate", "AED 1,350"],
+  ["Guest Rating", "4.8"],
+];
+
+const adminMetrics = [
+  ["Total Properties", "148"],
+  ["Active Bookings", "326"],
+  ["Pending Owner Applications", "19"],
+  ["Monthly Booking Value", "AED 1.82M"],
+];
+
+const bookingRows = [
+  ["Palm Serene Villa", "Jun 22-28", "AED 24,250", "Confirmed"],
+  ["Celeste Suite", "Jun 18-23", "AED 6,250", "Arrival"],
+  ["Azure Escape", "Jul 02-09", "AED 10,360", "Pending"],
 ];
 
 export default function HomePage() {
   return (
     <>
-      <section className="hero">
-        <div className="hero-shapes">
-          <div className="sh sh1" />
-          <div className="sh sh2" />
-          <div className="sh sh3" />
-        </div>
-        <div className="hero-content">
-          <div className="hero-badge">✦ Dubai&apos;s Premium Holiday Home Platform</div>
-          <h1>
-            Find Your Perfect Stay
-            <br />
-            in <em>Dubai</em>
-          </h1>
-          <p className="hero-sub">
-            Handpicked luxury apartments, villas &amp; holiday homes — from Marina skylines to
-            Palm beachfronts.
-          </p>
-          <div className="search-box">
+      <section className="hero luxury-hero">
+        <div className="hero-film" />
+        <div className="hero-content luxury-hero-content">
+          <div className="hero-copy">
+            <div className="hero-badge">Lumiras Casa · UAE Luxury Holiday Homes</div>
+            <h1>Luxury Holiday Homes, Curated for Elevated UAE Stays</h1>
+            <p className="hero-sub">
+              Premium villas, apartments, and private residences across the UAE with seamless
+              booking, refined service, and comfort designed around you.
+            </p>
+            <div className="hero-actions">
+              <Link className="btn-luxury" href="/stays">Explore Stays</Link>
+              <Link className="btn-glass" href="/owners">List Your Property</Link>
+            </div>
+            <div className="trust-row" aria-label="Lumiras Casa trust badges">
+              {trustBadges.map((badge) => <span key={badge}>{badge}</span>)}
+            </div>
+          </div>
+
+          <form className="search-box luxury-search" action="/stays" aria-label="Search stays">
             <div className="sf">
-              <label>Location</label>
-              <select>
-                <option>All Dubai Areas</option>
-                <option>Dubai Marina</option>
-                <option>Downtown Dubai</option>
-                <option>Business Bay</option>
-                <option>Palm Jumeirah</option>
-                <option>JBR</option>
-                <option>Dubai Hills</option>
+              <label>Destination</label>
+              <select name="destination" defaultValue="UAE">
+                <option value="UAE">All UAE Destinations</option>
+                <option>Dubai</option>
+                <option>Abu Dhabi</option>
+                <option>Ras Al Khaimah</option>
+                <option>Fujairah</option>
               </select>
             </div>
             <div className="sf">
-              <label>Check-in → Check-out</label>
-              <input type="text" placeholder="Select dates" />
+              <label>Check-in</label>
+              <input name="checkin" type="date" />
+            </div>
+            <div className="sf">
+              <label>Check-out</label>
+              <input name="checkout" type="date" />
             </div>
             <div className="sf">
               <label>Guests</label>
-              <select>
-                <option>1–2 Guests</option>
-                <option>3–4 Guests</option>
-                <option>5–6 Guests</option>
-                <option>7+ Guests</option>
+              <select name="guests" defaultValue="2">
+                <option value="2">2 Guests</option>
+                <option>4 Guests</option>
+                <option>6 Guests</option>
+                <option>8+ Guests</option>
               </select>
             </div>
-            <Link className="search-btn" href="/browse">
-              🔍 Search
-            </Link>
-          </div>
+            <div className="sf">
+              <label>Property Type</label>
+              <select name="type" defaultValue="all">
+                <option value="all">All Types</option>
+                <option>Villa</option>
+                <option>Apartment</option>
+                <option>Penthouse</option>
+                <option>Monthly Stay</option>
+              </select>
+            </div>
+            <button className="search-btn" type="submit">Search Stays</button>
+          </form>
         </div>
       </section>
 
-      <div className="stats-bar">
+      <div className="stats-bar luxury-stats">
         <div className="stats-inner">
-          <div className="stat-item"><div className="stat-num">700+</div><div className="stat-lbl">Premium Properties</div></div>
-          <div className="stat-item"><div className="stat-num">12,000+</div><div className="stat-lbl">Happy Guests</div></div>
-          <div className="stat-item"><div className="stat-num">35</div><div className="stat-lbl">Dubai Neighbourhoods</div></div>
-          <div className="stat-item"><div className="stat-num">4.9★</div><div className="stat-lbl">Average Rating</div></div>
+          <div className="stat-item"><div className="stat-num">700+</div><div className="stat-lbl">Curated Homes</div></div>
+          <div className="stat-item"><div className="stat-num">24/7</div><div className="stat-lbl">Guest Support</div></div>
+          <div className="stat-item"><div className="stat-num">4</div><div className="stat-lbl">UAE Destinations</div></div>
+          <div className="stat-item"><div className="stat-num">4.9</div><div className="stat-lbl">Guest Rating</div></div>
         </div>
       </div>
 
-      {/* Areas */}
-      <section className="sec" style={{ background: "var(--mist)" }}>
+      <section className="sec ivory-sec editorial-intro">
+        <div className="sec-inner intro-grid">
+          <div>
+            <div className="sec-label">The Lumiras Casa Standard</div>
+            <div className="sec-title">Private residences with the rhythm of a grand hotel.</div>
+          </div>
+          <p className="sec-sub">
+            We curate homes for guests who expect elegance without friction: cinematic locations,
+            considered interiors, clear booking, and a support team that understands hospitality.
+          </p>
+        </div>
+      </section>
+
+      <section className="sec dark-sec destination-sec" id="destinations">
         <div className="sec-inner">
           <div className="sec-header">
             <div>
-              <div className="sec-label">Browse by location</div>
-              <div className="sec-title">Discover Dubai&apos;s Finest Areas</div>
+              <div className="sec-label">Browse by Destination</div>
+              <div className="sec-title">UAE stays shaped around how you want to travel.</div>
+              <p className="sec-sub">
+                From skyline apartments to coastal villas, discover UAE stays shaped around how
+                you want to travel.
+              </p>
             </div>
-            <Link className="link-more" href="/browse">
-              View all areas →
-            </Link>
+            <Link className="link-more" href="/stays">View all stays</Link>
           </div>
-          <div className="areas-grid">
-            {areas.map((area) => (
-              <Link className="area-card" href="/browse" key={area.name}>
-                <div className="area-img">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={area.img} alt={area.name} />
-                  <div className="area-overlay" />
-                  <div className="area-txt">
-                    <div className="area-name">{area.name}</div>
-                    <div className="area-count">{area.count}</div>
-                  </div>
+          <div className="destination-grid">
+            {destinations.map((destination) => (
+              <Link className="destination-card" href={`/stays?destination=${destination.name}`} key={destination.name}>
+                <img src={destination.img} alt={destination.name} />
+                <div className="destination-overlay" />
+                <div className="destination-content">
+                  <span>{destination.icon}</span>
+                  <h3>{destination.name}</h3>
+                  <p>{destination.descriptor}</p>
+                  <strong>{destination.stays}</strong>
                 </div>
               </Link>
             ))}
@@ -117,88 +195,140 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Featured Properties */}
-      <section className="sec">
+      <section className="sec pearl-sec">
         <div className="sec-inner">
-          <div className="sec-label">Hand-picked for you</div>
-          <div className="sec-title">Holiday Homes &amp; Apartments</div>
-          <p className="sec-sub" style={{ marginBottom: "1.75rem" }}>
-            From cozy studios to palatial villas — for every trip, every budget.
+          <div className="sec-label">Featured Residences</div>
+          <div className="sec-title">A sharper edit of premium UAE homes.</div>
+          <p className="sec-sub">
+            Larger imagery, clearer stay details, and a booking-forward card system for client
+            presentation.
           </p>
-          <FilterTabs />
           <PropertyGrid id="home-props" />
-          <div style={{ textAlign: "center", marginTop: "2.5rem" }}>
-            <Link
-              href="/browse"
-              style={{
-                background: "none",
-                border: "2px solid var(--teal)",
-                color: "var(--teal)",
-                padding: "12px 32px",
-                borderRadius: "10px",
-                fontSize: "15px",
-                fontWeight: 600,
-                cursor: "pointer",
-                fontFamily: "inherit",
-                textDecoration: "none",
-                display: "inline-block",
-              }}
-            >
-              View All Properties →
-            </Link>
+          <div className="center-row">
+            <Link className="outline-luxury" href="/stays">View All Properties</Link>
           </div>
         </div>
       </section>
 
-      {/* Why */}
-      <section className="sec dark-sec">
+      <section className="sec dark-sec collections-sec" id="concierge">
         <div className="sec-inner">
-          <div className="sec-label" style={{ color: "#5EEAD4" }}>
-            Why choose us
-          </div>
-          <div className="sec-title" style={{ color: "#fff" }}>
-            The OrahStays Difference
-          </div>
-          <div className="why-grid">
-            {whyCards.map((card) => (
-              <div className="why-card" key={card.title}>
-                <div className="why-icon">{card.icon}</div>
-                <div className="why-title">{card.title}</div>
-                <div className="why-desc">{card.desc}</div>
+          <div className="sec-label">Signature Collections</div>
+          <div className="sec-title">Curated paths into the right kind of stay.</div>
+          <div className="collection-grid">
+            {collections.map(([title, copy, icon]) => (
+              <div className="collection-card" key={title}>
+                <div className="collection-icon">{icon}</div>
+                <h3>{title}</h3>
+                <p>{copy}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="sec" style={{ background: "var(--mist)" }}>
-        <div className="sec-inner">
-          <div className="sec-label">Guest reviews</div>
-          <div className="sec-title">What Our Guests Say</div>
-          <div className="testi-grid">
-            {testimonials.map((t) => (
-              <TestimonialCard key={t.name} {...t} />
-            ))}
+      <section className="sec ivory-sec owner-acquisition">
+        <div className="sec-inner owner-split">
+          <div className="owner-image">
+            <img src="https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=1100&q=88&fit=crop" alt="Luxury apartment interior" />
+          </div>
+          <div>
+            <div className="sec-label">For Property Owners</div>
+            <div className="sec-title">Turn Your Property Into a Premium Holiday Home</div>
+            <p className="sec-sub">
+              Lumiras Casa helps owners position, present, and manage premium residences for
+              short-term stays across the UAE.
+            </p>
+            <div className="benefit-grid">
+              {ownerBenefits.map((benefit) => <span key={benefit}>{benefit}</span>)}
+            </div>
+            <div className="hero-actions">
+              <Link className="btn-luxury" href="/owners">Start Owner Application</Link>
+              <Link className="outline-luxury" href="#owner-dashboard">Preview Owner Dashboard</Link>
+            </div>
           </div>
         </div>
       </section>
 
-      <div className="cta-banner">
-        <h2>Own a Property in Dubai?</h2>
-        <p>
-          Maximize your returns with professional short-term rental management. We handle
-          everything — from guests to maintenance.
-        </p>
-        <div className="cta-btns">
-          <Link className="btn-white" href="/owners">
-            Calculate Your Earnings
-          </Link>
-          <Link className="btn-outline-w" href="/owners">
-            Learn About Management
-          </Link>
+      <section className="sec dark-sec dashboard-sec" id="owner-dashboard">
+        <div className="sec-inner dashboard-grid">
+          <div>
+            <div className="sec-label">Owner Dashboard Preview</div>
+            <div className="sec-title">Built for Owners, Not Just Guests</div>
+            <p className="sec-sub">
+              Preview performance, bookings, occupancy, and property readiness from a clean owner
+              dashboard.
+            </p>
+            <Link className="btn-luxury" href="/owners">View Owner Demo</Link>
+          </div>
+          <div className="dashboard-mock">
+            <div className="dashboard-topbar">
+              <span>Palm Serene Villa</span>
+              <strong>Owner view</strong>
+            </div>
+            <div className="metric-grid">
+              {ownerMetrics.map(([label, value]) => (
+                <div className="metric-card" key={label}>
+                  <span>{label}</span>
+                  <strong>{value}</strong>
+                </div>
+              ))}
+            </div>
+            <div className="mini-chart">
+              {[42, 58, 52, 78, 68, 86, 74].map((height, index) => (
+                <i style={{ height: `${height}%` }} key={index} />
+              ))}
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
+
+      <section className="sec pearl-sec admin-home-preview">
+        <div className="sec-inner dashboard-grid reverse">
+          <div className="dashboard-mock light">
+            <div className="dashboard-topbar">
+              <span>Admin Operations</span>
+              <strong>Client preview</strong>
+            </div>
+            <div className="metric-grid">
+              {adminMetrics.map(([label, value]) => (
+                <div className="metric-card" key={label}>
+                  <span>{label}</span>
+                  <strong>{value}</strong>
+                </div>
+              ))}
+            </div>
+            <div className="mock-table">
+              {bookingRows.map((row) => (
+                <div className="mock-row" key={row[0]}>
+                  {row.map((cell) => <span key={cell}>{cell}</span>)}
+                </div>
+              ))}
+            </div>
+          </div>
+          <div>
+            <div className="sec-label">Admin Preview</div>
+            <div className="sec-title">A platform view for bookings, media, owners, and teams.</div>
+            <p className="sec-sub">
+              Static mock admin screens help the client understand how operations, booking value,
+              owner applications, and media readiness can be managed later.
+            </p>
+            <Link className="outline-luxury" href="/admin">Open Admin Preview</Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="sec ivory-sec" id="journal">
+        <div className="sec-inner journal-band">
+          <div>
+            <div className="sec-label">Journal</div>
+            <div className="sec-title">Stay notes for the UAE luxury traveller.</div>
+          </div>
+          <p className="sec-sub">
+            Editorial space for destination guides, owner insights, seasonal stay ideas, and
+            concierge-led content in the next prototype phase.
+          </p>
+        </div>
+      </section>
     </>
   );
 }

@@ -5,24 +5,50 @@ import PriceRangeFilter from "@/components/PriceRangeFilter";
 export default function BrowsePage() {
   return (
     <>
-      <div className="page-hero">
+      <div className="page-hero stays-hero">
         <div className="breadcrumb">
-          <Link href="/">Home</Link> / <span>Browse Homes</span>
+          <Link href="/">Home</Link> / <span>Stays</span>
         </div>
-        <h1>Browse Dubai Holiday Homes</h1>
-        <p>700+ verified properties across Dubai&apos;s most sought-after neighbourhoods</p>
+        <h1>Curated UAE Residences</h1>
+        <p>Premium villas, penthouses, apartments, and coastal retreats selected for refined stays.</p>
       </div>
 
-      <section className="sec">
+      <section className="sec stays-page-sec">
         <div className="sec-inner">
+          <div className="stays-search-strip">
+            <div className="sf">
+              <label>Destination</label>
+              <select defaultValue="UAE">
+                <option value="UAE">All UAE Destinations</option>
+                <option>Dubai</option>
+                <option>Abu Dhabi</option>
+                <option>Ras Al Khaimah</option>
+                <option>Fujairah</option>
+              </select>
+            </div>
+            <div className="sf">
+              <label>Dates</label>
+              <input placeholder="Select dates" />
+            </div>
+            <div className="sf">
+              <label>Guests</label>
+              <select defaultValue="2">
+                <option value="2">2 Guests</option>
+                <option>4 Guests</option>
+                <option>6 Guests</option>
+                <option>8+ Guests</option>
+              </select>
+            </div>
+            <button className="search-btn" type="button">Search</button>
+          </div>
           <div className="browse-layout">
             {/* Filter Panel */}
             <div className="filter-panel">
-              <h3>🔍 Filter Properties</h3>
+              <h3>Refine Collection</h3>
               <div className="filter-group">
                 <label>Area</label>
                 <select>
-                  <option>All Areas</option>
+                  <option>All Destinations</option>
                   <option>Dubai Marina</option>
                   <option>Downtown Dubai</option>
                   <option>Palm Jumeirah</option>
@@ -84,20 +110,8 @@ export default function BrowsePage() {
                 </select>
               </div>
               <PropertyGrid id="browse-props" />
-              <div style={{ textAlign: "center", marginTop: "2.5rem" }}>
-                <button
-                  style={{
-                    background: "var(--teal)",
-                    color: "#fff",
-                    border: "none",
-                    padding: "12px 32px",
-                    borderRadius: "10px",
-                    fontSize: "14px",
-                    fontWeight: 600,
-                    cursor: "pointer",
-                    fontFamily: "inherit",
-                  }}
-                >
+              <div className="center-row">
+                <button className="outline-luxury">
                   Load More Properties
                 </button>
               </div>

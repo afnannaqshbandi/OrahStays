@@ -6,11 +6,11 @@ export default function Footer() {
       <div className="footer-grid">
         <div>
           <div className="foot-brand">
-            Orah<span>Stays</span>
+            Lumiras<span>Casa</span>
           </div>
           <p className="foot-desc">
-            Dubai&apos;s premium holiday home platform — connecting discerning guests with
-            exceptional properties across the emirate. DTCM licensed &amp; fully compliant.
+            A premium UAE holiday homes brand curating elegant residences, seamless digital
+            booking, and hotel-grade guest support across the emirates.
           </p>
           <div className="foot-social">
             <div className="soc-btn">f</div>
@@ -51,7 +51,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="foot-bottom">
-        <span>© 2026 OrahStays. All rights reserved. DTCM Licensed.</span>
+        <span>© 2026 Lumiras Casa. All rights reserved. DTCM Licensed.</span>
         <span>Privacy Policy · Terms · House Rules · Sitemap</span>
       </div>
     </footer>

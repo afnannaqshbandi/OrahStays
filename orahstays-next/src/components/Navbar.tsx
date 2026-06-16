@@ -22,45 +22,44 @@ type MenuItem = {
 
 const menus: MenuItem[] = [
   {
-    label: "Browse Homes",
-    href: "/browse",
-    items: [
-      { icon: "🏙️", title: "All Properties", sub: "700+ homes in Dubai", href: "/browse" },
-      { icon: "🏢", title: "Apartments", sub: "Studios to 3-bedroom", href: "/browse" },
-      { icon: "🏡", title: "Villas", sub: "Private pool & garden", href: "/browse" },
-      { icon: "🌴", title: "Palm Jumeirah", sub: "Beachfront exclusives", href: "/browse" },
-      { icon: "⛵", title: "Dubai Marina", sub: "Skyline & waterfront", href: "/browse" },
-      { icon: "🗼", title: "Downtown Dubai", sub: "Near Burj Khalifa", href: "/browse" },
-    ],
+    label: "Home",
+    href: "/",
+    items: [],
   },
   {
-    label: "Monthly Stays",
-    href: "/monthly",
-    items: [
-      { icon: "📅", title: "30+ Night Stays", sub: "Best monthly rates", href: "/monthly" },
-      { icon: "💼", title: "Corporate Housing", sub: "Business travellers", href: "/monthly" },
-      { icon: "🌍", title: "Relocation Stays", sub: "Settling into Dubai", href: "/monthly" },
-    ],
+    label: "Stays",
+    href: "/stays",
+    items: [],
   },
   {
-    label: "Property Owners",
+    label: "Destinations",
+    href: "/#destinations",
+    items: [],
+  },
+  {
+    label: "List Your Property",
     href: "/owners",
-    items: [
-      { icon: "📈", title: "List Your Property", sub: "Start earning today", href: "/owners" },
-      { icon: "🔧", title: "Property Management", sub: "Full-service management", href: "/owners" },
-      { icon: "💰", title: "Earnings Calculator", sub: "See your potential", href: "/owners" },
-      { icon: "🤝", title: "Partner Program", sub: "Referral rewards", href: "/owners" },
-    ],
+    items: [],
+  },
+  {
+    label: "Concierge",
+    href: "/#concierge",
+    items: [],
   },
   {
     label: "About",
     href: "/about",
-    items: [
-      { icon: "✨", title: "Our Story", sub: "Who we are", href: "/about" },
-      { icon: "🏆", title: "Awards & Recognition", sub: "Industry accolades", href: "/about" },
-      { icon: "👥", title: "Our Team", sub: "Meet the people", href: "/about" },
-      { icon: "📞", title: "Contact Us", sub: "Get in touch", href: "/contact" },
-    ],
+    items: [],
+  },
+  {
+    label: "Journal",
+    href: "/#journal",
+    items: [],
+  },
+  {
+    label: "Contact",
+    href: "/contact",
+    items: [],
   },
 ];
 
@@ -71,7 +70,8 @@ export default function Navbar() {
     <nav>
       <div className="nav-inner">
         <Link className="logo" href="/">
-          Orah<span>Stays</span>
+          <strong>Lumiras<span>Casa</span></strong>
+          <small>Private UAE Stays</small>
         </Link>
         <ul className="nav-menu">
           {menus.map((menu) => (
@@ -81,28 +81,28 @@ export default function Navbar() {
                 href={menu.href}
               >
                 {menu.label}
-                {chevron}
+                {menu.items.length > 0 ? chevron : null}
               </Link>
-              <div className="dropdown">
-                {menu.items.map((item) => (
-                  <Link className="dropdown-item" href={item.href} key={item.title}>
-                    <div className="di-icon">{item.icon}</div>
-                    <div className="di-text">
-                      <div className="di-title">{item.title}</div>
-                      <div className="di-sub">{item.sub}</div>
-                    </div>
-                  </Link>
-                ))}
-              </div>
+              {menu.items.length > 0 ? (
+                <div className="dropdown">
+                  {menu.items.map((item) => (
+                    <Link className="dropdown-item" href={item.href} key={item.title}>
+                      <div className="di-icon">{item.icon}</div>
+                      <div className="di-text">
+                        <div className="di-title">{item.title}</div>
+                        <div className="di-sub">{item.sub}</div>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              ) : null}
             </li>
           ))}
         </ul>
         <div className="nav-right">
-          <Link className="btn-ghost" href="/contact">
-            Contact
-          </Link>
+          <button className="lang-select" type="button">EN</button>
           <Link className="btn-primary" href="/owners">
-            List Property
+            Enquire Now
           </Link>
         </div>
       </div>

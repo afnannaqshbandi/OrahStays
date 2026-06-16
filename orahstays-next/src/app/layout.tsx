@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -11,17 +11,17 @@ const inter = Inter({
   display: "swap",
 });
 
-const playfair = Playfair_Display({
+const playfair = Cormorant_Garamond({
   subsets: ["latin"],
-  weight: ["400", "700"],
+  weight: ["500", "600", "700"],
   variable: "--font-playfair",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "OrahStays — Dubai Holiday Homes",
+  title: "Lumiras Casa — UAE Luxury Holiday Homes",
   description:
-    "Handpicked luxury apartments, villas & holiday homes — from Marina skylines to Palm beachfronts.",
+    "Luxury holiday homes across the UAE, curated with seamless booking and hospitality-led guest support.",
 };
 
 export default function RootLayout({

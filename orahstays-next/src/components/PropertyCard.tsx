@@ -16,23 +16,24 @@ export default function PropertyCard({ property }: { property: Property }) {
         <div className={`prop-badge ${property.bc}`}>{property.badge}</div>
         <button
           className="prop-fav"
+          aria-label="Save property"
           onClick={(e) => {
             e.stopPropagation();
             setFav((f) => !f);
           }}
         >
-          {fav ? "❤️" : "🤍"}
+          {fav ? "♥" : "♡"}
         </button>
       </div>
       <div className="prop-body">
-        <div className="prop-area">{property.area}</div>
         <div className="prop-name">{property.name}</div>
+        <div className="prop-area">{property.area}</div>
         <div className="prop-meta">
           <span>
-            🛏 {property.beds} {property.beds === "Studio" ? "" : "Bed"}
+            <i>Guests</i> {property.guests}
           </span>
-          <span>🚿 {property.baths} Bath</span>
-          <span>👤 {property.guests} Guests</span>
+          <span><i>Beds</i> {property.beds}</span>
+          <span><i>Baths</i> {property.baths}</span>
         </div>
         <div className="prop-footer">
           <div className="prop-price">
@@ -47,7 +48,7 @@ export default function PropertyCard({ property }: { property: Property }) {
                 router.push("/property");
               }}
             >
-              Book
+              View / Book
             </button>
           </div>
         </div>

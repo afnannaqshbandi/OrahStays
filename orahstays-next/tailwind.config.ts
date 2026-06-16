@@ -5,6 +5,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        obsidian: "#090909",
+        charcoal: "#141414",
+        night: "#0E1726",
+        ivory: "#F7F1E8",
+        pearl: "#FFFDF8",
+        champagne: "#C8A96A",
+        sand: "#D9C7A3",
+        bronze: "#9B7A45",
+        emerald: "#0F3D36",
         teal: {
           DEFAULT: "#0D9488",
           dark: "#0F766E",
